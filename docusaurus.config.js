@@ -12,16 +12,16 @@ const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 const config = {
   title: "アルゴリズム入門",
   // tagline: '',
-  url: "https://sikepuri-algorithm.github.io",
-  baseUrl: "/",
+  url: "https://t-cool.github.io",
+  baseUrl: "/py/",
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
   favicon: "img/favicon.ico",
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: "sikepuri-algorithm", // Usually your GitHub org/user name.
-  projectName: "sikepuri-algorithm", // Usually your repo name.
+  organizationName: "t-cool", // Usually your GitHub org/user name.
+  projectName: "py", // Usually your repo name.
 
   // Even if you don't use internalization, you can use this field to set useful
   // metadata like html lang. For example, if your site is Chinese, you may want
@@ -46,7 +46,7 @@ const config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            "https://github.com/sikepuri-algorithm/sikepuri-algorithm.github.io/tree/main",
+            "https://github.com/t-cool/py/tree/main",
           remarkPlugins: [math],
           rehypePlugins: [katex],
         },
@@ -92,7 +92,7 @@ const config = {
           },
           // {to: '/blog', label: 'Blog', position: 'left'},
           {
-            href: "https://github.com/sikepuri-algorithm/sikepuri-algorithm.github.io",
+            href: "https://github.com/t-cool/py",
             label: "GitHub",
             position: "right",
           },
@@ -123,7 +123,7 @@ const config = {
               // },
               {
                 label: "GitHub",
-                href: "https://github.com/sikepuri-algorithm/sikepuri-algorithm.github.io",
+                href: "https://github.com/t-cool/py",
               },
               {
                 label: "Twitter",

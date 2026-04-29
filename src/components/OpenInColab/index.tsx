@@ -12,7 +12,7 @@ export default function OpenInColab({ path }: { path: string }) {
     <>
       <div className={styles.root}>
         <a
-          href={`https://colab.research.google.com/github/sikepuri-algorithm/sikepuri-algorithm.github.io/blob/main/static${path}`}
+          href={`https://colab.research.google.com/github/t-cool/py/blob/main/static${path}`}
           target="_blank"
           rel="noreferrer"
         >
