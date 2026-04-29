@@ -1,0 +1,42 @@
+---
+sidebar_position: 2
+---
+
+import ViewSource from "@site/src/components/ViewSource";
+import Answer from "@site/src/components/Answer";
+
+# はじめての Python
+
+はじめてのプログラムを書いてみましょう。
+
+## Hello World
+
+はじめてのプログラムを書いてみましょう。
+
+プログラミングの世界では、まず画面上に `Hello World!` と表示させるのが慣例になっています。以下のコードが画面上に `Hello World!` と表示するプログラムです。以下のコードを右のエディタ上で実行してみましょう。
+
+<ViewSource path="/getting-started/hello_world.ipynb" />
+
+`Hello World!` と表示されたら成功です。
+
+`print` は画面に文字列を表示させる命令です。`"` と `"` で括った文字列が画面に表示されます。
+
+### 練習問題
+
+先程のプログラムを少し変えて、`Hello from Python!` と出力するようなプログラムを書いてみましょう。
+
+<Answer>
+
+`"` と `"` で括られた文字列を `Hello World!` から次のように `Hello from Python!` に変えれば、完成です。
+
+  <ViewSource path="/getting-started/hello_from_python.ipynb" />
+</Answer>
+
+## コメント
+
+`#` から文末まではコメントとして扱われます。
+プログラムを読みやすくするために説明を書くときや一時的にあるコードを実行しないようにするときなどによく使われます。
+
+<ViewSource path="/getting-started/comment.ipynb" />
+
+<ViewSource path="/getting-started/comment2.ipynb" />

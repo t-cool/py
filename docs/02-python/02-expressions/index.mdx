@@ -1,0 +1,58 @@
+---
+sidebar_position: 3
+---
+
+import ViewSource from "@site/src/components/ViewSource";
+import Answer from "@site/src/components/Answer";
+
+# 算術演算子
+
+ここでは、Python で様々な計算を行っていきます。
+
+## 算術演算子
+
+Python を使って演算をしてみましょう。次のように書くと、$1+1$ を Python に計算させて、その結果を表示することができます。
+
+<ViewSource path="/expressions/sum.ipynb" />
+
+:::tip
+Python では、多くの場合半角スペースは無視されます。(ただし、単語の途中などに入れてはいけません。)そのため、読みやすくするために半角スペースを入れていますがなくても同じように動きます。
+
+ただし、全角スペースが入っているとエラーが出てしまうのでプログラムを書くときには絶対に全角スペースを入れないように気をつけましょう。
+:::
+
+:::note
+上のプログラムは、次のようにしても実行できます。それぞれには、少し違いがあるようですが気にしなくて大丈夫でしょう。
+
+Python では足し算以外にも次のように様々な演算をすることができます。
+
+| 演算子 | 説明   | 例                                                 |
+| ------ | ------ | -------------------------------------------------- |
+| `+`    | 足す   | <ViewSource path="/expressions/sum.ipynb" />       |
+| `-`    | 引く   | <ViewSource path="/expressions/sub.ipynb" />       |
+| `*`    | 掛ける | <ViewSource path="/expressions/multi.ipynb" />     |
+| `/`    | 割る   | <ViewSource path="/expressions/div.ipynb" />       |
+| `**`   | べき乗 | <ViewSource path="/expressions/exp.ipynb" />       |
+| `//`   | 商     | <ViewSource path="/expressions/quotient.ipynb" />  |
+| `%`    | 剰余   | <ViewSource path="/expressions/remainder.ipynb" /> |
+
+括弧 `(`、`)` を用いることで、複雑な計算をすることもできます。
+黄金比を計算してみましょう。黄金比は、$\frac{1+\sqrt{5}}{2}$ で与えられます。
+
+<ViewSource path="/expressions/golden_ratio.ipynb" />
+
+:::tip
+平方根は 0.5 乗とすることで計算できます。
+:::
+
+### 練習問題
+
+20°C での華氏温度を求めてみましょう。華氏温度は、$F$ を華氏温度、$C$ を摂氏温度として次のような式で求められます。
+
+$$
+F=\frac{9}{5}C+32
+$$
+
+<Answer>
+  <ViewSource path="/expressions/to_fahrenheit.ipynb" />
+</Answer>

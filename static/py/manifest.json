@@ -1,0 +1,239 @@
+{
+  "root": [
+    "ita.py"
+  ],
+  "order": [
+    "order/example1.py",
+    "order/example4.py",
+    "order/exercise1.py",
+    "order/exercise3.py",
+    "order/exercise2.py",
+    "order/example3.py",
+    "order/example2.py"
+  ],
+  "multi-array": [
+    "multi-array/calc_sum.py",
+    "multi-array/total_score_max.py",
+    "multi-array/calc_sum_revised.py",
+    "multi-array/total_score_max_2d.py",
+    "multi-array/calc_sum3d.py"
+  ],
+  "life-game": [
+    "life-game/life_game_func.py",
+    "life-game/life_game.py",
+    "life-game/count_neighbors_draft.py",
+    "life-game/count_neighbors.py",
+    "life-game/next_generation.py",
+    "life-game/is_alive.py"
+  ],
+  "sort": [
+    "sort/merge_sort.py",
+    "sort/sort.py",
+    "sort/bubble_sort_reverse.py",
+    "sort/bubble_sort.py",
+    "sort/merge_sort_reverse.py",
+    "sort/sorted.py"
+  ],
+  "array": [
+    "array/average3.py",
+    "array/variance2.py",
+    "array/max.py",
+    "array/variance_numpy.py",
+    "array/average2.py",
+    "array/change2.py",
+    "array/range.py",
+    "array/change3.py",
+    "array/variance.py",
+    "array/average_numpy.py",
+    "array/variance_statistics.py",
+    "array/average_statistics.py",
+    "array/sum2.py",
+    "array/sum.py",
+    "array/average.py",
+    "array/change.py",
+    "array/average4.py"
+  ],
+  "recursion": [
+    "recursion/recurrence_relation_analytical.py",
+    "recursion/recurrence_relation_dp.py",
+    "recursion/gcd.py",
+    "recursion/fib.py",
+    "recursion/lcm.py",
+    "recursion/tri.py",
+    "recursion/recurrence_relation_rec.py",
+    "recursion/sum.py",
+    "recursion/lucas.py"
+  ],
+  "if": [
+    "if/the_right_to_vote.py",
+    "if/logical_operator.py",
+    "if/logical_operator_another.py",
+    "if/comparison_operator.py",
+    "if/true.py",
+    "if/below.py",
+    "if/or.py",
+    "if/abs2.py",
+    "if/abs.py",
+    "if/eq.py",
+    "if/neq.py",
+    "if/false.py",
+    "if/not.py",
+    "if/abs_default.py",
+    "if/abs_math.py",
+    "if/multi_comparison_operator.py",
+    "if/greater_val.py",
+    "if/legal_age.py",
+    "if/alcohol.py",
+    "if/less_than.py",
+    "if/greater.py",
+    "if/over.py",
+    "if/grade.py",
+    "if/and.py"
+  ],
+  "simulation": [
+    "simulation/draw_cell.py",
+    "simulation/parabolic_motion_analytical.py",
+    "simulation/parabolic_motion_view.py",
+    "simulation/parabolic_motion.py",
+    "simulation/uniform_linear_motion.py",
+    "simulation/resisted_motion.py",
+    "simulation/resisted_motion_analytical.py",
+    "simulation/uniform_linear_motion_return_array.py",
+    "simulation/uniform_linear_motion_analytical.py",
+    "simulation/uniform_linear_motion_view.py",
+    "simulation/uniform_linear_motion_view_analytical.py",
+    "simulation/parabolic_motion_return_array.py"
+  ],
+  "library": [
+    "library/calc_e.py",
+    "library/sqrt.py",
+    "library/log.py",
+    "library/sin_90.py",
+    "library/cos.py",
+    "library/tan.py",
+    "library/floor.py",
+    "library/math_example.py",
+    "library/pi.py",
+    "library/ceil.py",
+    "library/fabs.py",
+    "library/calc_e_2.py",
+    "library/exp.py",
+    "library/sin.py"
+  ],
+  "function": [
+    "function/hello.py",
+    "function/calc_x^2_revised.py",
+    "function/introduce_self_return_value.py",
+    "function/calc_x^2.py",
+    "function/indent.py",
+    "function/introduce_self.py",
+    "function/introduce_language.py",
+    "function/introduce_language_fstring.py",
+    "function/gravitation.py",
+    "function/introduce_self_fstring.py"
+  ],
+  "image": [
+    "image/black_to_green.py",
+    "image/color.py",
+    "image/grayscale.py",
+    "image/gradation.py",
+    "image/black_to_red.py",
+    "image/lattice_pattern.py",
+    "image/white_to_blue.py",
+    "image/append.py",
+    "image/black_and_white.py"
+  ],
+  "search": [
+    "search/binary_right_practice.py",
+    "search/binary_search.py",
+    "search/bisect_left.py",
+    "search/binary_left_practice.py",
+    "search/linear_search.py",
+    "search/bisect_right.py",
+    "search/linear_practice.py"
+  ],
+  "pip": [
+    "pip/pandas.py"
+  ],
+  "gaussian-elimination": [
+    "gaussian-elimination/gaussian_elimination_revised.py",
+    "gaussian-elimination/gauss_jordan_elimination.py",
+    "gaussian-elimination/gaussian_elimination_error.py",
+    "gaussian-elimination/gaussian_elimination.py"
+  ],
+  "getting-started": [
+    "getting-started/hello_world.py",
+    "getting-started/comment.py",
+    "getting-started/hello_from_python.py",
+    "getting-started/comment2.py"
+  ],
+  "variables": [
+    "variables/sound_velocity_revised_20degree.py",
+    "variables/sound_velocity.py",
+    "variables/to_fahrenheit.py",
+    "variables/substitution_practice.py",
+    "variables/sound_velocity_revised.py",
+    "variables/substitution.py"
+  ],
+  "expressions": [
+    "expressions/quotient.py",
+    "expressions/golden_ratio.py",
+    "expressions/div.py",
+    "expressions/to_fahrenheit.py",
+    "expressions/remainder.py",
+    "expressions/multi.py",
+    "expressions/sub.py",
+    "expressions/sum2.py",
+    "expressions/sum.py",
+    "expressions/exp.py"
+  ],
+  "for": [
+    "for/factorial_math.py",
+    "for/sum_1to10.py",
+    "for/up_to.py",
+    "for/sum_1to1000_revised.py",
+    "for/range.py",
+    "for/sum_1to20.py",
+    "for/print_1to10.py",
+    "for/while.py",
+    "for/factorial.py",
+    "for/repeat_hello2.py",
+    "for/up_to_sum.py",
+    "for/sum_1to100_revised.py",
+    "for/sum_1to100.py",
+    "for/repeat_hello.py"
+  ],
+  "dp": [
+    "dp/fib_memoization.py",
+    "dp/knapsack.py",
+    "dp/fib_bottom_up.py",
+    "dp/ssp.py",
+    "dp/fib_bottom_up2.py"
+  ],
+  "practice": [
+    "practice/prime_number.py",
+    "practice/gcd.py",
+    "practice/fizzbuzz.py",
+    "practice/fizzbuzz2.py",
+    "practice/prime_number2.py",
+    "practice/prime_factorize.py",
+    "practice/gcd_math.py",
+    "practice/gcd_recursive.py"
+  ],
+  "error": [
+    "error/rounding_error.py",
+    "error/cancellation_correct.py",
+    "error/cancellation.py",
+    "error/loss_correct.py",
+    "error/loss.py"
+  ],
+  "monte-carlo": [
+    "monte-carlo/calc_pi.py",
+    "monte-carlo/coin_toss.py",
+    "monte-carlo/dice.py",
+    "monte-carlo/random.py",
+    "monte-carlo/randint.py",
+    "monte-carlo/randrange.py",
+    "monte-carlo/uniform.py"
+  ]
+}

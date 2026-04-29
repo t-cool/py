@@ -1,0 +1,174 @@
+---
+sidebar_position: 8
+---
+
+import ViewSource from "@site/src/components/ViewSource";
+import Hint from "@site/src/components/Hint";
+import Answer from "@site/src/components/Answer";
+
+# 条件分岐
+
+ここでは、Python で条件分岐をする方法について学んでいきます。
+
+## 論理値
+
+Python では、文字列や数字以外にも論理値という真か偽かを表す値があります。真は `True`、偽は `False` と表せ、これは変数などにも代入できます。
+
+下のプログラムでは、`True` と `False` を表示しています。`"True"`、`"False"` のようにダブルクォーテーション（ `"` ）がついていないことに気をつけましょう。
+
+<ViewSource path="/if/true.ipynb" />
+
+<ViewSource path="/if/false.ipynb" />
+
+## 比較演算子
+
+Python では、次のように比較演算子を用いて真偽を判定することができます。次のプログラムでは、`age > 20` が偽なので、論理値である `False` が返されています。
+
+<ViewSource path="/if/comparison_operator.ipynb" />
+
+他にも様々な比較演算子があります。なぜか `!=` の存在を忘れる人が続出するので、要注意！
+
+| 比較演算子 | 説明       | 例                                        |
+| ---------- | ---------- | ----------------------------------------- |
+| `==`       | 等しい     | <ViewSource path="/if/eq.ipynb" />        |
+| `!=`       | 等しくない | <ViewSource path="/if/neq.ipynb" />       |
+| `<`        | 小なり     | <ViewSource path="/if/less_than.ipynb" /> |
+| `<=`       | 以下       | <ViewSource path="/if/below.ipynb" />     |
+| `>`        | 大なり     | <ViewSource path="/if/greater.ipynb" />   |
+| `>=`       | 以上       | <ViewSource path="/if/over.ipynb" />      |
+
+他の多くのプログラミング言語はできませんが、実は、Python では数学のように複数の比較演算子を使った条件も書くことができます。
+
+<ViewSource path="/if/multi_comparison_operator.ipynb" />
+
+## 論理演算子
+
+論理値に対して、論理演算子を使ってさらに複雑な計算をすることができます。
+
+<ViewSource path="/if/logical_operator.ipynb" />
+
+このプログラムは、`>=` 一つを使って書き換えた次と同じです。
+
+<ViewSource path="/if/logical_operator_another.ipynb" />
+
+他にも様々な論理演算子があります。
+
+| 論理演算子 | 説明   | 例                                  |
+| ---------- | ------ | ----------------------------------- |
+| `not`      | 否定   | <ViewSource path="/if/not.ipynb" /> |
+| `and`      | かつ   | <ViewSource path="/if/and.ipynb" /> |
+| `or`       | または | <ViewSource path="/if/or.ipynb" />  |
+
+## 条件分岐
+
+### if
+
+年齢に応じて、飲酒可能な年齢かを判定するプログラムを作りましょう。しかし、今までに学習した内容ではこのようなプログラムを作ることはできそうにありません。このような処理をするために、if 文が使えます。飲酒可能な年齢かを判定するプログラムを見てみましょう。
+
+<ViewSource path="/if/alcohol.ipynb" />
+
+if 文は、次のようにして作ることができます。
+条件式には、先程の比較演算子や論理演算子が使えます。
+条件式を評価した結果が `True` であれば、実行されます。
+
+```python
+if 条件式:
+    真の時の処理
+```
+
+### if ~ else
+
+条件が偽の時にも行いたい処理がある場合は、if ~ else 文を用いて、次のようにすることができます。
+
+未成年か成人かを判定するプログラムを作ってみましょう。
+
+<ViewSource path="/if/legal_age.ipynb" />
+
+if ~ else 文の構文は次のとおりです。
+
+```python
+if 条件式:
+    真の時の処理
+else:
+    偽の時の処理
+```
+
+### if ~ elif ~ else
+
+条件が偽の時でさらに条件分岐を行いたい場合は、if ~ elif ~ else 文を用いて、次のようにすることができます。
+
+選挙権を判定するプログラムを作ってみましょう。
+
+<ViewSource path="/if/the_right_to_vote.ipynb" />
+
+if ~ elif ~ else 文の構文は次のとおりです。
+
+```python
+if 条件式1:
+    条件式1が真の時の処理
+elif 条件式2:
+    条件式1が偽でかつ条件式2が真の時の処理
+else:
+    条件式1も条件式2も偽の時の処理
+```
+
+### 練習問題 1
+
+学生の成績を判定するプログラムを作ってみましょう。学生の点数から、優上、優、良、可、不可を判定してください。
+
+| 成績 | 点数      |
+| ---- | --------- |
+| 優上 | 90 点以上 |
+| 優   | 80〜89 点 |
+| 良   | 65〜79 点 |
+| 可   | 50〜64 点 |
+| 不可 | 0〜49 点  |
+
+<Answer>
+
+<ViewSource path="/if/grade.ipynb" />
+
+</Answer>
+
+### 練習問題 2
+
+2 つの数のうち大きい方の数を返す関数を作りましょう。
+
+<Answer>
+
+<ViewSource path="/if/greater_val.ipynb" />
+
+</Answer>
+
+### 練習問題 3
+
+絶対値を求めるプログラムを作ってみましょう。
+
+<Hint>
+
+次の式を思い起こせば、作れそうです。
+
+$$
+|x|=
+\begin{dcases}
+    x  & \text{if $x\geq 0$,} \\
+    -x & \text{else.}
+\end{dcases}
+$$
+
+</Hint>
+
+<Answer>
+<ViewSource path="/if/abs.ipynb" />
+
+別解
+
+<ViewSource path="/if/abs2.ipynb" />
+
+実は、組み込み関数で abs 関数があります。また、前に出てきた[math ライブラリの fabs 関数](https://docs.python.org/ja/3/library/math.html#math.fabs)もあります。
+
+<ViewSource path="/if/abs_default.ipynb" />
+
+<ViewSource path="/if/abs_math.ipynb" />
+
+</Answer>

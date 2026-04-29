@@ -1,0 +1,125 @@
+---
+sidebar_position: 12
+---
+
+import ViewSource from "@site/src/components/ViewSource";
+import Answer from "@site/src/components/Answer";
+import Hint from "@site/src/components/Hint";
+
+# 練習問題
+
+これまでの項で、Python の基本的なことは学び終わったので、実際に様々な練習問題を解いてみましょう。
+
+## 練習問題 1
+
+Fizz Buzz 問題を解くプログラムを作ってみましょう。
+これは、プログラミング初心者向けの簡単な例題としてとても有名です。初歩的なプログラムを作成する能力があるのかを判定するためによく使われます。
+
+Fizz Buzz のルールは、次のようになっています。
+
+> プレイヤーは円状に座る。最初のプレイヤーは「1」と数字を発言する。次のプレイヤーは直前のプレイヤーの発言した数字に 1 を足した数字を発言していく。ただし、3 の倍数の場合は「Fizz」（Bizz Buzz の場合は「Bizz」）、5 の倍数の場合は「Buzz」、3 の倍数かつ 5 の倍数の場合（すなわち 15 の倍数の場合）は「Fizz Buzz」（Bizz Buzz の場合は「Bizz Buzz」）を数の代わりに発言しなければならない。発言を間違えた者や、ためらった者は脱落となる。
+> -- <cite>[フリー百科事典『ウィキペディア（Wikipedia）』](https://ja.wikipedia.org/wiki/Fizz_Buzz)</cite>
+
+要するに、次のように出力するプログラムを作れば良いです。
+
+```plaintext
+1
+2
+Fizz
+4
+Buzz
+Fizz
+7
+8
+Fizz
+Buzz
+11
+Fizz
+13
+14
+FizzBuzz
+```
+
+$n$ 番目まで Fizz Buzz での正しい解を表示するプログラムを作ってみましょう。
+
+<Answer>
+<ViewSource path="/practice/fizzbuzz.ipynb" />
+
+もう一つの有名な解法を見てみましょう。
+
+<ViewSource path="/practice/fizzbuzz2.ipynb" />
+</Answer>
+
+## 練習問題 2
+
+素数かどうかを判定する関数を作りましょう。さらに、この関数を使って $n$ 番目までの素数を表示する関数を作ってみましょう。実際に、`n = 100` として出力してみましょう。
+
+<Answer>
+<ViewSource path="/practice/prime_number.ipynb" />
+
+実は、$n$ が素数であるかを判定するのには、$\sqrt{n}$ までの自然数で割り切れるかを調べれば十分です。これは、もし $\sqrt{n}$ よりも大きい約数があってもその約数と対になる約数が存在してそれは $\sqrt{n}$ よりも小さくなるからです。よって、次のようにした方がより高速でしょう。
+
+<ViewSource path="/practice/prime_number2.ipynb" />
+
+</Answer>
+
+## 練習問題 3
+
+素因数分解をする関数を作りましょう。
+
+<Answer>
+  <ViewSource path="/practice/prime_factorize.ipynb" />
+</Answer>
+
+## 練習問題 4
+
+最大公約数を求めるプログラムを作ってみましょう。最大公約数（greatest common divisor）は、GCD とよく略されます。
+
+<Hint>
+
+ユークリッドの互除法を用いれば簡単にできます。
+
+ユークリッドの互除法を用いると、次のように最大公約数が計算できるのでした。
+$\mathrm{gcd}(a, b)$ を $a$ と $b$ の最大公約数とします。
+
+例：$30$ と $18$ の最大公約数を求める。
+
+$$
+\begin{aligned}
+    \mathrm{gcd}(30, 18) &= \mathrm{gcd}(18, 30 - 18\times 1) \\\\
+                         &= \mathrm{gcd}(18, 12) \\\\
+                         &= \mathrm{gcd}(12, 18 - 12\times 1) \\\\
+                         &= \mathrm{gcd}(12, 6) \\\\
+                         &= \mathrm{gcd}(6, 12 - 6\times 2) \\\\
+                         &= \mathrm{gcd}(6, 0) \\\\
+                         &= 6
+\end{aligned}
+$$
+
+よって、最大公約数は $6$
+
+</Hint>
+
+<Answer>
+
+ユークリッドの互除法を使うと、最大公約数を求めるプログラムは次のようになります。
+
+<ViewSource path="/practice/gcd.ipynb" />
+
+`a, b = b, a` は、次と同じ意味です。
+
+```python
+tmp = a
+a = b
+b = tmp
+```
+
+再帰を使うと次のようにもできます。再帰を使ったプログラムは、後の項で紹介します。
+
+<ViewSource path="/practice/gcd_recursive.ipynb" />
+
+[`math` ライブラリの `gcd` 関数](https://docs.python.org/ja/3/library/math.html#math.gcd)を使っても計算できます。
+
+<ViewSource path="/practice/gcd_math.ipynb" />
+
+</Answer>

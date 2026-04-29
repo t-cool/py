@@ -1,0 +1,106 @@
+---
+sidebar_position: 5
+---
+
+import ViewSource from "@site/src/components/ViewSource";
+import Hint from "@site/src/components/Hint";
+import Answer from "@site/src/components/Answer";
+
+# 関数
+
+ここでは、関数の使い方を学んでいきます。
+
+## 関数
+
+$f(x) = x^2$ としたときの、$f(2) + f(3)$ を求めてみましょう。
+
+<ViewSource path="/function/calc_x^2.ipynb" />
+
+一応できましたが、このようにつくると関数値を求めるときに毎回 $f(x)$ の定義を見て書かなければなりません。今回のように、単純な関数では良いですがもっと複雑な関数では大変です。ここで、関数が活躍します。
+
+関数を用いると、次のように簡単にプログラムを書くことができます。
+
+<ViewSource path="/function/calc_x^2_revised.ipynb" />
+
+関数は、次のようにして定義することができます。引数は「ひきすう」と読みます。
+
+```python
+def 関数名(引数):
+    return 戻り値
+```
+
+関数を使用するときは、次のようにするだけです。
+
+```python
+関数名(任意の引数)
+```
+
+:::caution
+Python では、きちんとインデント（字下げ）をしないとエラーが発生してしまいます。
+例えば、先程のプログラムで `return` の前のインデントを忘れると、どこまでが関数の中身であるのかわからなくなり、次のようにエラーが発生してしまいます。
+
+<ViewSource path="/function/indent.ipynb" />
+:::
+
+プログラムにおける関数は、数学における関数よりも多くのことができます。
+例えば、数学では戻り値は必要ですが、プログラムにおける関数には戻り値は必ずしも必要ありません。そのため、次のようなプログラムをつくることができます。
+
+<ViewSource path="/function/hello.ipynb" />
+
+このようにプログラムにおいては、一連の処理を実行するときに関数を使うことができます。もちろん、引数を与えると引数に応じた処理をすることができます。
+
+<ViewSource path="/function/introduce_self.ipynb" />
+
+:::note
+
+上のプログラムでも問題ないのですが、実際には次のプログラムのように `f-string` を使った表記の方が可読性が高くなって実際の開発では好まれてたりします。しかし、あまり気にしなくて良いでしょう。ちなみに、`"` の前に `f` と書くことで、`"` 内の `{` で囲まれた変数の中身を表示できます。
+
+<ViewSource path="/function/introduce_self_fstring.ipynb" />
+
+:::
+
+戻り値を使うと、次のようにも表現できます。
+
+<ViewSource path="/function/introduce_self_return_value.ipynb" />
+
+### 練習問題 1
+
+万有引力を求める関数を作って実際に計算してみましょう。
+
+$$
+F=G\frac{Mm}{r^2}
+$$
+
+$G=6.7\times 10^{-11}$、$r=2$、$M=60$、$m=20$ とします。
+
+<Answer>
+
+<ViewSource path="/function/gravitation.ipynb" />
+
+ここで `e-08` と表示されていますが、これは $10^{-8}$ という意味です。
+
+</Answer>
+
+### 練習問題 2
+
+`私の名前は、東大太郎です。中国語選択です。` のように自分の名前と第２外国語を紹介する関数を作ってみましょう。
+
+<Hint>
+
+`name` と `language` を引数にとる `introduce_self` 関数を作ってみると、良いでしょう。
+
+</Hint>
+
+<Answer>
+
+<ViewSource path="/function/introduce_language.ipynb" />
+
+:::note
+
+`f-string` を使うと次のようになります。
+
+<ViewSource path="/function/introduce_language_fstring.ipynb" />
+
+:::
+
+</Answer>

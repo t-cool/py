@@ -1,0 +1,90 @@
+/**
+ * Any CSS included here will be global. The classic template
+ * bundles Infima by default. Infima is a CSS framework designed to
+ * work well for content-centric websites.
+ */
+
+/* You can override the default Infima variables here. */
+:root {
+  --ifm-color-primary: #2e8555;
+  --ifm-color-primary-dark: #29784c;
+  --ifm-color-primary-darker: #277148;
+  --ifm-color-primary-darkest: #205d3b;
+  --ifm-color-primary-light: #33925d;
+  --ifm-color-primary-lighter: #359962;
+  --ifm-color-primary-lightest: #3cad6e;
+  --ifm-code-font-size: 95%;
+  --docusaurus-highlighted-code-line-bg: rgba(0 0 0 10%);
+}
+
+/* For readability concerns, you should choose a lighter palette in dark mode. */
+[data-theme="dark"] {
+  --ifm-color-primary: #25c2a0;
+  --ifm-color-primary-dark: #21af90;
+  --ifm-color-primary-darker: #1fa588;
+  --ifm-color-primary-darkest: #1a8870;
+  --ifm-color-primary-light: #29d5b0;
+  --ifm-color-primary-lighter: #32d8b4;
+  --ifm-color-primary-lightest: #4fddbf;
+  --docusaurus-highlighted-code-line-bg: rgba(0 0 0 30%);
+}
+
+/* Ensure code blocks have a dark background and correct font color */
+.prism-code {
+  background-color: #000000 !important; /* Pure black background as requested */
+  color: #f8f8f2 !important; /* Light default text color (Dracula/Tomorrow Night style) */
+}
+
+/* 
+  PREVIOUS INCORRECT RULE REMOVED:
+  .prism-code span { color: inherit; } 
+  This was overriding syntax highlighting colors.
+*/
+
+/*
+cases環境でうまく動かないため、コメントアウト
+.katex-display > .katex { white-space:normal }
+
+.katex-display > .base { margin: 0.25em 0 }
+
+.katex-display { margin: 0.5em 0; }
+*/
+
+.katex-display {
+  overflow: auto hidden;
+}
+
+/* ダークモード時にSVG画像の背景を白にする */
+[data-theme="dark"] img[src*=".svg"] {
+  background-color: #ffffff;
+}
+
+/**
+ * デスクトップでもモバイル用のハンバーガーメニューを使用するための設定
+ */
+
+/* ハンバーガーアイコンを常に表示 */
+.navbar__toggle {
+  display: flex !important;
+}
+
+/* デスクトップ用の固定サイドバーを非表示にする */
+@media (min-width: 997px) {
+  .theme-doc-sidebar-container {
+    display: none !important;
+  }
+
+  /* コンテンツエリアの左余白をなくして全幅にする */
+  .theme-doc-main-container {
+    margin-left: 0 !important;
+  }
+}
+
+/* ナビゲーションアイテム（メニューバーのリンク）もハンバーガーに集約する場合、
+   デスクトップでも非表示にすることでスッキリします */
+@media (min-width: 997px) {
+  .navbar__items:not(.navbar__items--right) {
+    /* 必要に応じて左側のアイテム（Docなど）を非表示にできます */
+    /* display: none; */
+  }
+}

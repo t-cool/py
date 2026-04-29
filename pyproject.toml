@@ -1,0 +1,34 @@
+[tool.poetry]
+name = "sikepuri-of-algorithm"
+version = "0.1.0"
+packages = [{include = "sikepuri_of_algorithm"}]
+
+[tool.poetry.dependencies]
+python = "^3.12"
+nbconvert = "^7.16.6"
+ipykernel = "^6.30.1"
+
+[tool.poetry.group.dev.dependencies]
+databooks = "^1.3.10"
+black = {extras = ["jupyter"], version = "^25.9.0"}
+nbqa = "^1.9.1"
+isort = "^6.1.0"
+pyupgrade = "^3.20.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.black]
+exclude='''
+(
+    /(
+        \.git |
+        node_modules |
+        build |
+        \.docusaurus |
+    )/ |
+    /my-website |
+    .*sum_1to100.ipynb
+)
+'''
