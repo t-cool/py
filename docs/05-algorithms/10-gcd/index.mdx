@@ -1,0 +1,60 @@
+---
+sidebar_position: 10
+---
+
+import ViewSource from "@site/src/components/ViewSource";
+import Answer from "@site/src/components/Answer";
+import Hint from "@site/src/components/Hint";
+
+# 最大公約数
+
+最大公約数を求めるプログラムを作ってみましょう。最大公約数（greatest common divisor）は、GCD とよく略されます。
+
+<Hint>
+
+ユークリッドの互除法を用いれば簡単にできます。
+
+ユークリッドの互除法を用いると、次のように最大公約数が計算できるのでした。
+$\mathrm{gcd}(a, b)$ を $a$ と $b$ の最大公約数とします。
+
+例：$30$ と $18$ の最大公約数を求める。
+
+$$
+\begin{aligned}
+    \mathrm{gcd}(30, 18) &= \mathrm{gcd}(18, 30 - 18\times 1) \\\\
+                         &= \mathrm{gcd}(18, 12) \\\\
+                         &= \mathrm{gcd}(12, 18 - 12\times 1) \\\\
+                         &= \mathrm{gcd}(12, 6) \\\\
+                         &= \mathrm{gcd}(6, 12 - 6\times 2) \\\\
+                         &= \mathrm{gcd}(6, 0) \\\\
+                         &= 6
+\end{aligned}
+$$
+
+よって、最大公約数は $6$
+
+</Hint>
+
+<Answer>
+
+ユークリッドの互除法を使うと、最大公約数を求めるプログラムは次のようになります。
+
+<ViewSource path="/practice/gcd.ipynb" />
+
+`a, b = b, a` は、次と同じ意味です。
+
+```python
+tmp = a
+a = b
+b = tmp
+```
+
+再帰を使うと次のようにもできます。再帰を使ったプログラムは、後の項で紹介します。
+
+<ViewSource path="/practice/gcd_recursive.ipynb" />
+
+[`math` ライブラリの `gcd` 関数](https://docs.python.org/ja/3/library/math.html#math.gcd)を使っても計算できます。
+
+<ViewSource path="/practice/gcd_math.ipynb" />
+
+</Answer>
