@@ -5,9 +5,20 @@ sidebar_position: 17
 import ViewSource from "@site/src/components/ViewSource";
 import Answer from "@site/src/components/Answer";
 
-# 素因数分解
+# 数字をバラバラに分解してみよう（素因数分解）
 
-素因数分解をする関数を作りましょう。
+## 数字の「組み立て図」
+
+どんなに大きな数字も、実は **「<ruby>素数<rt>そすう</rt></ruby>」** のかけ算だけで作ることができます。
+
+たとえば、「12」をバラバラにしてみると……
+$12 = 2 \times 2 \times 3$
+
+というふうに、2と3という素数だけでできているのがわかりますね。これを **「<ruby>素因数分解<rt>そいんすうぶんかい</rt></ruby>」** とよびます。
+
+## プログラムで作ってみよう
+
+小さい素数から<ruby>順番<rt>じゅんばん</rt></ruby>に割っていって、数字をどんどんバラバラに分解するプログラムを作ってみましょう！
 
 <Answer>
   <ViewSource path="/practice/prime_factorize.ipynb" />

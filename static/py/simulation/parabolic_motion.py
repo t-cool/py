@@ -9,14 +9,12 @@ async def main():
     import math
     g = 9.8
 
-
     def parabolic_motion_step(x, y, u, v, dt):
         x = x + u * dt
         y = y + v * dt
         u = u
         v = v - g * dt
         return [x, y, u, v]
-
 
     def parabolic_motion(v0, theta, t, dt):
         x = 0
@@ -27,7 +25,6 @@ async def main():
         for i in range(n):
             x, y, u, v = parabolic_motion_step(x, y, u, v, dt)
         return [x, y]
-
 
     print(parabolic_motion(30, math.pi / 4, 4, 0.01))
 

@@ -14,7 +14,6 @@ async def main():
                 head += 1
         return head / n
 
-
     print(calc_coin_probability(100000))
 
 # メインスレッドを停止させないよう非同期で実行

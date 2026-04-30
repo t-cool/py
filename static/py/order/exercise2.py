@@ -13,7 +13,6 @@ async def main():
                 max_val = data[i]
         return max_val
 
-
     print(calc_max([1, 4, 3, 5, 2]))
 
 # メインスレッドを停止させないよう非同期で実行

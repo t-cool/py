@@ -17,7 +17,6 @@ try:
 except Exception:
     pass
 
-
 class Plot:
     def image_show(self, data):
         plt.figure()

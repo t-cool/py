@@ -13,7 +13,6 @@ async def main():
                 cnt += 1
         return cnt
 
-
     print(f(100))
 
 # メインスレッドを停止させないよう非同期で実行

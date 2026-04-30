@@ -16,7 +16,6 @@ async def main():
                     cnt += board[k][l]
         return cnt - board[i][j]
 
-
     def is_alive(board, i, j):
         neighbors_cnt = count_neighbors(board, i, j)
         if board[i][j] == 0:
@@ -32,7 +31,6 @@ async def main():
             elif neighbors_cnt >= 4:
                 return 0
 
-
     def next_generation(board):
         row = len(board)
         column = len(board[0])
@@ -42,14 +40,12 @@ async def main():
                 next_board[i][j] = is_alive(board, i, j)
         return next_board
 
-
     def life_game(board, n):
         results = [0 for _ in range(n)]
         results[0] = board
         for i in range(1, n):
             results[i] = next_generation(results[i - 1])
         return results
-
 
     data = [
         [0, 0, 0, 0, 0, 0, 0, 0],

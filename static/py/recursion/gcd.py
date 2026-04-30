@@ -12,7 +12,6 @@ async def main():
         else:
             return gcd(b, a % b)
 
-
     print(gcd(30, 18))
 
 # メインスレッドを停止させないよう非同期で実行

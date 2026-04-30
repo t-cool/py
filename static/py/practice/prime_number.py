@@ -14,12 +14,10 @@ async def main():
                 return False
         return True
 
-
     def print_prime_number(n):
         for i in range(1, n + 1):
             if is_prime_number(i):
                 print(i)
-
 
     print_prime_number(100)
 

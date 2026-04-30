@@ -12,7 +12,6 @@ async def main():
             sum_val += scores[i]
         return sum_val / len(scores)
 
-
     scores = [26, 78, 83, 20, 10, 11, 22, 16, 41, 95]
     print(average(scores))
 

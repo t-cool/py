@@ -37,7 +37,6 @@ async def main():
                 a[j][len(a[i]) - 1] -= a[j][i] * x[i]
         return x
 
-
     print(gaussian_elimination_revised([[0, -2, 3, 2], [-1, 3, -2, 1], [1, -1, 6, 11]]))
 
 # メインスレッドを停止させないよう非同期で実行

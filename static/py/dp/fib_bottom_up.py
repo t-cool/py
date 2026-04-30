@@ -14,7 +14,6 @@ async def main():
             dp.append(dp[i - 1] + dp[i - 2])
         return dp[n]
 
-
     print(fib(100))
 
 # メインスレッドを停止させないよう非同期で実行

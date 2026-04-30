@@ -9,7 +9,6 @@ async def main():
     def uniform_linear_motion(x0, v0, t):
         return x0 + v0 * t
 
-
     print(uniform_linear_motion(0, 10, 10))
 
 # メインスレッドを停止させないよう非同期で実行

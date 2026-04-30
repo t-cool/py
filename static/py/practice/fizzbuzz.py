@@ -17,7 +17,6 @@ async def main():
             else:
                 print(i)
 
-
     fizzbuzz(30)
 
 # メインスレッドを停止させないよう非同期で実行

@@ -20,7 +20,6 @@ async def main():
                     dp[i][j] = dp[i - 1][j] or dp[i - 1][j - a[i - 1]]
         return dp[len(a)][N]
 
-
     print(ssp([3, 4, 6], 10))
 
 # メインスレッドを停止させないよう非同期で実行

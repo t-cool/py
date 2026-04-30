@@ -18,7 +18,6 @@ async def main():
         else:
             print("不可です。もう少し頑張りましょう。")
 
-
     evaluate_grade(79)
 
 # メインスレッドを停止させないよう非同期で実行

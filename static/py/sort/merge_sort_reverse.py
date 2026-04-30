@@ -15,7 +15,6 @@ async def main():
         else:
             return [right[0]] + merge(left, right[1:])
 
-
     def merge_sort(data):
         if len(data) <= 1:
             return data
@@ -23,7 +22,6 @@ async def main():
         left = merge_sort(data[:mid])
         right = merge_sort(data[mid:])
         return merge(left, right)
-
 
     data = [3, 8, 2, 5, 1, 10, 6, 9, 4, 7]
     print(merge_sort(data))

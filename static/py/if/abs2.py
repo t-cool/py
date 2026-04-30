@@ -11,7 +11,6 @@ async def main():
             n = -n
         return n
 
-
     print(abs_val(-10))
 
 # メインスレッドを停止させないよう非同期で実行

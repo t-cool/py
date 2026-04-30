@@ -16,7 +16,6 @@ async def main():
                 s += 1
         return s / n * 4
 
-
     print(calc_pi(1000000))
 
 # メインスレッドを停止させないよう非同期で実行

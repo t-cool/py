@@ -9,7 +9,6 @@ async def main():
     def uniform_linear_motion_step(x, v0, dt):
         return x + v0 * dt
 
-
     def uniform_linear_motion(x0, v0, t, dt):
         # highlight-start
         x = []
@@ -19,7 +18,6 @@ async def main():
             x.append(uniform_linear_motion_step(x[i], v0, dt))
         return x
         # highlight-end
-
 
     print(uniform_linear_motion(0, 10, 10, 0.1))
 

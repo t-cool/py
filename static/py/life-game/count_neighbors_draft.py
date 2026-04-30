@@ -13,7 +13,6 @@ async def main():
                 cnt += board[k][l]
         return cnt - board[i][j]
 
-
     board = [[1, 1, 0], [1, 0, 0], [0, 0, 0]]
     print(count_neighbors(board, 1, 1))
 

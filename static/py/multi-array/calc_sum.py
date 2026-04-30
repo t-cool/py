@@ -12,7 +12,6 @@ async def main():
             sum_val += scores[i]
         return sum_val
 
-
     a_scores = [83, 75, 32]
     b_scores = [73, 53, 84]
     c_scores = [63, 48, 64]

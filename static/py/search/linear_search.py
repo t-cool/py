@@ -11,7 +11,6 @@ async def main():
             if data[i] == name:
                 return i
 
-
     students = [
         "伊藤",
         "井上",

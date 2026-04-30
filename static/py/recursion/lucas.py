@@ -14,7 +14,6 @@ async def main():
         else:
             return lucas(n - 1) + lucas(n - 2)
 
-
     print(lucas(10))
 
 # メインスレッドを停止させないよう非同期で実行

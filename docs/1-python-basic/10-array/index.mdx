@@ -6,143 +6,70 @@ import ViewSource from "@site/src/components/ViewSource";
 import Hint from "@site/src/components/Hint";
 import Answer from "@site/src/components/Answer";
 
-# 配列
+# たくさんのデータをまとめよう！〜<ruby>配列<rt>はいれつ</rt></ruby>〜
 
-## 配列
+ここでは、たくさんの<ruby>数字<rt>すうじ</rt></ruby>や<ruby>文字<rt>もじ</rt></ruby>をひとまとめにする「<ruby>配列<rt>はいれつ</rt></ruby>」を学びましょう。
 
-5 人の生徒の数学の点数をそれぞれ 96 点、56 点、42 点、74 点、86 点とします。この平均点を求めるプログラムを書いてみましょう。
+## 配列ってなに？
 
-<ViewSource path="/array/average.ipynb" />
+たとえば、クラス 5人のテストの点数（96点、56点、42点、74点、86点）の<ruby>平均<rt>へいきん</rt></ruby>を出したいとしましょう。
+これをふつうの<ruby>変数<rt>へんすう</rt></ruby>でやろうとすると、箱を5つも用意しなければいけません。
 
-一応、作ることができましたが、生徒の数が増えてしまうと大変です。前項の for 文を使うと簡単にできそうですが変数を for 文ではうまく扱えないので、繰り返し処理を用いて書くことができません。
-
-ここで、配列を使います。配列は、複数のデータを順番に並べたもので、大量のデータを扱うことができます。数学におけるベクトルと同じようなものです。
+そこで使うのが「配列」です。配列は、 **「たくさんの数字が<ruby>順番<rt>じゅんばん</rt></ruby>にならんだ、長い入れ物」** だと思ってくださいね。電車の<ruby>車両<rt>しゃりょう</rt></ruby>がつながっているみたいですね！
 
 ![配列の説明](array.drawio.svg)
 
-配列を用いると、先程のプログラムは、次のように書くことができます。※詳しい説明は後でします。
-
-<ViewSource path="/array/average2.ipynb" />
-
-さらに、for 文を用いることができるようになり、次のように簡単にかつ応用の利く形で書くことができます。
+配列を使えば、for 文といっしょに使うことで、100人でも1000人でも、かんたんに合計や平均をだせるようになります。
 
 <ViewSource path="/array/average3.ipynb" />
 
-配列について、詳しく見ていきましょう。
+## 配列のルール
 
-配列は、次のような構文で作ることができます。
-
-```python
-配列名 = [一つ目のデータ, 二つ目のデータ, 三つ目のデータ, ..., nつ目のデータ]
-```
-
-配列から、`i` 番目のデータを取り出すときは次のようにして取り出すことができます。ここで、`i - 1` となっているのは、配列の添字は **0 から始まっている**からです。
+配列は、このように作ります。
 
 ```python
-配列名[i - 1]
+点数のリスト = [96, 56, 42, 74, 86]
 ```
 
-配列の長さは、次のようにして取得することができます。
+### 何番目を取り出す？
+
+配列の中から数字を取り出すときは、ちょっとしたコツがあります。
+それは、 **「さいしょは 0番目からかぞえる」** ということです！
 
 ```python
-len(配列名)
+点数のリスト[0] # これで、いちばん最初の「96」が取り出せます
+点数のリスト[1] # これで、2番目の「56」が取り出せます
 ```
 
-次の例題を解いてみてください。
+プログラミングの世界では、1 からじゃなくて 0 からかぞえるのがルールです。おもしろいですね！
 
-### 例題
+### 配列の長さを知る
 
-一人目の点数を 96 点から 37 点に書き換えてみましょう。5 人の点数は、`scores = [96, 56, 42, 74, 86]` のように与えられます。
+配列にいくつデータが入っているか知りたいときは、 `len`（レン）という道具を使います。
+
+```python
+len(点数のリスト) # これで「5」という答えが返ってきます
+```
+
+## <ruby>練習問題<rt>れんしゅうもんだい</rt></ruby>
+
+### 1. 点数をかきかえましょう！
+5人の点数が入ったリスト `scores` の、1番目の人の点数を `37` 点に書きかえてみましょう。
 
 <Answer>
 <ViewSource path="/array/change.ipynb" />
-
-配列を出力してみると、確かに変更できたことが確認できます。
-
-<ViewSource path="/array/change2.ipynb" />
+※ `scores[0] = 37` と書けば、いちばん最初の箱の中身を入れかえられますよ！
 </Answer>
 
-配列の添字には、変数を使うこともできます。これを用いて、さきほどの問題をさらに一般化した問題を解いてみましょう。
-
-### 例題
-
-`i` 人目の点数を `laterScore` に書き換えるプログラムを作って、実際に `i` に 1、`laterScore` に 37 を入力して、先程と同じようになるか試してみましょう。
-
-<Answer>
-
-添字が **0 から始まっている**ことに気をつけましょう。
-
-<ViewSource path="/array/change3.ipynb" />
-</Answer>
-
-:::note
-実は for 文を書くときに出てきた range は、配列のようなものを作る関数です。ここで、配列のようなものと言ったのは厳密には配列ではないからですが、ひとまず配列と考えて問題ないでしょう。そのため、例えば `range(1, 11)` は `[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]` を生成します。list 関数は range 関数の返り値を配列にしています。
-
-<ViewSource path="/array/range.ipynb" />
-
-前項の練習問題の解答で `sum(range(1, 11))` のような別解がありましたが、sum 関数は与えられた配列の和を求める関数なので、これは range 関数で 1 から 10 までの配列を作り、それの和を sum 関数で求めていたということです。
-
-<ViewSource path="/array/sum.ipynb" />
-
-<ViewSource path="/array/sum2.ipynb" />
-
-:::
-
-### 練習問題 1
-
-生徒の英語の点数が書かれた配列を受け取って、その平均点を返す関数を作ってみましょう。
-実際に、点数をそれぞれ 26 点、78 点、83 点、20 点、10 点、11 点、22 点、16 点、41 点、95 点として計算してみましょう。
-
-<Hint>
-
-$n$ 個のデータを $x_1,x_2,\dots,x_n$、平均点を $\bar{x}$ とすると、次のようにして求められるのでした。
-
-$$
-\bar{x}=\frac{x_1+x_2+\dots +x_n}{n}=\frac{\sum_{i=1}^n x_i}{n}
-$$
-
-</Hint>
+### 2. <ruby>平均点<rt>へいきんてん</rt></ruby>をだしましょう！
+10人のテスト의 点数が入った配列を受け取って、平均点を計算してくれる機械を作ってみましょう。
 
 <Answer>
 <ViewSource path="/array/average4.ipynb" />
-
-実は、平均点を求めるライブラリもあります。[statistics ライブラリの mean 関数](https://docs.python.org/ja/3/library/statistics.html#statistics.mean)や[NumPy ライブラリの mean 関数](https://numpy.org/doc/stable/reference/generated/numpy.mean.html)があります。
-
-<ViewSource path="/array/average_statistics.ipynb" />
-
-<ViewSource path="/array/average_numpy.ipynb" />
 </Answer>
 
-### 練習問題 2
-
-今度は、分散を求めるプログラムを書いてみましょう。
-
-$n$ 個のデータを $x_1,x_2,\dots,x_n$、平均を $\bar{x}$ とすると、分散 $s^2$ は次のように与えられるとします。
-
-$$
-s^2=\frac{\sum_{i=1}^n(x_i-\bar{x})^2}{n}
-$$
-
-練習問題 1 と同じように具体的な値を入れて確かめてみましょう。
-
-<Answer>
-<ViewSource path="/array/variance.ipynb" />
-
-次のようにしても計算できますが(`variance` 関数の中が少し変わっています。)、for 文の中が実行される度に `average` 関数が実行されて計算量が多くなってしまうので、上のようにした方が良いでしょう。
-
-<ViewSource path="/array/variance2.ipynb" />
-
-実は、分散を計算するライブラリがあります。[statistics ライブラリの pvariance 関数](https://docs.python.org/ja/3/library/statistics.html#statistics.pvariance)や[NumPy ライブラリの var 関数](https://numpy.org/doc/stable/reference/generated/numpy.var.html)があります。
-
-<ViewSource path="/array/variance_statistics.ipynb" />
-
-<ViewSource path="/array/variance_numpy.ipynb" />
-
-</Answer>
-
-### 練習問題 3
-
-最高点を求めるプログラムを作ってみましょう。
+### 3. いちばん高い点数は？
+配列の中にある数字の中から、いちばん大きい数字（最高点）を見つけるプログラムを作ってみましょう！
 
 <Answer>
   <ViewSource path="/array/max.ipynb" />

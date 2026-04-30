@@ -16,7 +16,6 @@ async def main():
             a, b = b, a + b
         return b
 
-
     print(fib(100))
 
 # メインスレッドを停止させないよう非同期で実行

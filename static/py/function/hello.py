@@ -9,7 +9,6 @@ async def main():
     def hello():
         print("Hello!")
 
-
     hello()
     hello()
     hello()

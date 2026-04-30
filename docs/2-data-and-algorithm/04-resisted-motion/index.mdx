@@ -5,89 +5,25 @@ sidebar_position: 4
 import ViewSource from "@site/src/components/ViewSource";
 import Answer from "@site/src/components/Answer";
 
-# 空気抵抗がある場合の運動
+# <ruby>風<rt>かぜ</rt></ruby>のじゃまがある時のうごき（空気抵抗）
 
-## 差分方程式
+## <ruby>空気<rt>くうき</rt></ruby>の「じゃま」を考えよう
 
-次は、さらに複雑な運動について考えましょう。
+こんどは、もっとリアルな動きにしてみましょう。
 
-鉛直上向きの初速度を $v_0$ 、鉛直上向きの速度を $v$ 、重力加速度を $g$ 、 $t$ 秒後の変位を $y$ 、比例定数 $k$ に対して速度に比例した抵抗 $kv$ があるとします。
+<ruby>現実<rt>げんじつ</rt></ruby>の世界では、走ったり<ruby>自転車<rt>じてんしゃ</rt></ruby>に乗ったりすると、風を感じますよね。
+物体が動くとき、空気は「うごきをじゃまする」のです。これを「<ruby>空気抵抗<rt>くうきていこう</rt></ruby>」といいます。
 
-運動方程式は次のようになります。
+速く動けば動くほど、空気のじゃまする力も大きくなります。
 
-$$
-\begin{aligned}
-    m\frac{d^2y}{dt^2}           &= -mg - kv \\\\
-    \therefore \frac{d^2y}{dt^2} &= -g - \frac{k}{m}v
-\end{aligned}
-$$
+## プログラムを作ってみよう
 
-よって、これらの関係は次のようになります。
-
-$$
-\begin{aligned}
-    \frac{dy}{dt} &= v \\\\
-    \frac{dv}{dt} &= -g - \frac{k}{m}v
-\end{aligned}
-$$
-
-これを差分化して、差分方程式を作ると次のようになります。
-
-$$
-\begin{aligned}
-    y_{n + 1} &= y_n + v_n\Delta t \\\\
-    v_{n + 1} &= v_n - g\Delta t - \frac{k}{m}v_n \Delta t
-\end{aligned}
-$$
-
-## プログラムの作成
-
-これを用いて、$t$ 秒後の変位 $y$ を求めて可視化するプログラムを作ってみましょう。
-
-次のようになります。領域外に出てしまうとエラーが出てしまうので、初期位置の $y$ 座標を 100 にしました。
+いつもの計算に、「空気のじゃま」を少し引き算するようにプログラムを作ってみましょう。
 
 <ViewSource path="/simulation/resisted_motion.ipynb" />
 
-これは可視化しても正しく動いているか、あまりよくわかりませんね。別のやり方にした方が良さそうです。
+これを使うと、ただ落とすだけよりも、すこしゆっくり落ちるようになります。
 
 :::note
-この微分方程式も少し大変ですが、解析的に解くことができます。
-
-$$
-\begin{aligned}
-    \frac{d^2y}{dt^2}                             &= -g - \frac{k}{m}v \\\\
-    \therefore \frac{dv}{dt}                      &= -g - \frac{k}{m}v \\\\
-    \therefore dv                                 &= \left(-g - \frac{k}{m}v\right) dt \\\\
-    \therefore dv                                 &= -\frac{k}{m}\left(\frac{m}{k}g + v\right) dt \\\\
-    \therefore \frac{dv}{\frac{m}{k}g + v}        &= -\frac{k}{m} dt \\\\
-    \therefore \log \left(\frac{m}{k}g + v\right) &= -\frac{k}{m}t + C \\\\
-    \therefore v + \frac{m}{k}g                   &= e^{-\frac{k}{m}t + C} \\\\
-    \therefore v                                  &= -\frac{m}{k}g + Ce^{-\frac{k}{m}t}
-\end{aligned}
-$$
-
-初期条件 $t = 0$ で $v = 0$ を代入して、
-
-$$
-\begin{aligned}
-    C            &= \frac{mg}{k}\\\\
-    \therefore v &= \frac{mg}{k}\left(e^{-\frac{k}{m}t} - 1\right) \\\\
-    \therefore x &= \frac{mg}{k}\left(-\frac{m}{k}e^{-\frac{k}{m}t} - t\right) + D \\\\
-\end{aligned}
-$$
-
-初期条件 $t = 0$ で $x = 0$ を代入して、
-
-$$
-\begin{aligned}
-    D            &= \frac{m^2g}{k^2} \\\\
-    \therefore x &= \frac{mg}{k}\left(-\frac{m}{k}e^{-\frac{k}{m}t}-t\right) + \frac{m^2g}{k^2} \\\\
-    \therefore x &= \frac{m^2g}{k^2}\left(1 - e^{-\frac{k}{m}t}\right) - \frac{mg}{k}t
-\end{aligned}
-$$
-
-これを使って、プログラムを作ると次のようになります。
-
-<ViewSource path="/simulation/resisted_motion_analytical.ipynb" />
-
+空気のじゃまを計算にいれるのは、<ruby>数学<rt>すうがく</rt></ruby>ですごくむずかしいことですが、コンピュータなら「ちょっとずつ計算」することで、かんたんに答えが見つかります！
 :::

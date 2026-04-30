@@ -13,7 +13,6 @@ async def main():
             a, b = b, a % b
         return a
 
-
     print(gcd(12, 16))
 
 # メインスレッドを停止させないよう非同期で実行

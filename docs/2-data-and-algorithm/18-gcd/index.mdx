@@ -6,55 +6,28 @@ import ViewSource from "@site/src/components/ViewSource";
 import Answer from "@site/src/components/Answer";
 import Hint from "@site/src/components/Hint";
 
-# 最大公約数
+# ぴったり重なる大きさを見つけよう（最大公約数）
 
-最大公約数を求めるプログラムを作ってみましょう。最大公約数（greatest common divisor）は、GCD とよく略されます。
+## <ruby>最大公約数<rt>さいだいこうやくすう</rt></ruby>って？
 
-<Hint>
+２つの数字があったとき、そのどちらもぴったり割り切ることができる一番大きな数字を **「<ruby>最大公約数<rt>さいだいこうやくすう</rt></ruby>」** といいます。
 
-ユークリッドの互除法を用いれば簡単にできます。
+英語では Greatest Common Divisor といって、よく **GCD** と<ruby>略<rt>りゃく</rt></ruby>されます。
 
-ユークリッドの互除法を用いると、次のように最大公約数が計算できるのでした。
-$\mathrm{gcd}(a, b)$ を $a$ と $b$ の最大公約数とします。
+## 2000年前から伝わるすごい技「ユークリッドの互除法」
 
-例：$30$ と $18$ の最大公約数を求める。
+むずかしい数式を使わなくても、**「あまり」** を使ってどんどん数字を小さくしていくと、答えがすぐに見つかるすごい方法があります。
 
-$$
-\begin{aligned}
-    \mathrm{gcd}(30, 18) &= \mathrm{gcd}(18, 30 - 18\times 1) \\\\
-                         &= \mathrm{gcd}(18, 12) \\\\
-                         &= \mathrm{gcd}(12, 18 - 12\times 1) \\\\
-                         &= \mathrm{gcd}(12, 6) \\\\
-                         &= \mathrm{gcd}(6, 12 - 6\times 2) \\\\
-                         &= \mathrm{gcd}(6, 0) \\\\
-                         &= 6
-\end{aligned}
-$$
+これを「ユークリッドの<ruby>互除法<rt>ごじょほう</rt></ruby>」といいます。
 
-よって、最大公約数は $6$
-
-</Hint>
-
-<Answer>
-
-ユークリッドの互除法を使うと、最大公約数を求めるプログラムは次のようになります。
+1. 大きいほうの数字を、小さいほうの数字で割ります。
+2. その「あまり」を使って、また同じことを繰り返します。
+3. あまりが 0 になったときの数字が、<ruby>正解<rt>せいかい</rt></ruby>ですよ！
 
 <ViewSource path="/practice/gcd.ipynb" />
 
-`a, b = b, a` は、次と同じ意味です。
-
-```python
-tmp = a
-a = b
-b = tmp
-```
-
-再帰を使うと次のようにもできます。再帰を使ったプログラムは、後の項で紹介します。
-
-<ViewSource path="/practice/gcd_recursive.ipynb" />
-
-[`math` ライブラリの `gcd` 関数](https://docs.python.org/ja/3/library/math.html#math.gcd)を使っても計算できます。
+:::tip
+Pythonには最初からこれをしてくれる便利な道具もありますよ。
 
 <ViewSource path="/practice/gcd_math.ipynb" />
-
-</Answer>
+:::

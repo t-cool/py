@@ -8,10 +8,8 @@ async def main():
     
     G = 6.7 * 10 ** (-11)
 
-
     def F(r, M, m):
         return G * M * m / r**2
-
 
     F(2, 60, 20)
 

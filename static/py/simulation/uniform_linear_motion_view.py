@@ -13,10 +13,8 @@ async def main():
         image[len(image) - 1 - y][x] = 1
         return image
 
-
     def uniform_linear_motion_step(x, v0, dt):
         return x + v0 * dt
-
 
     def uniform_linear_motion(x0, v0, t, dt):
         x = []
@@ -25,7 +23,6 @@ async def main():
         for i in range(n):
             x.append(uniform_linear_motion_step(x[i], v0, dt))
         return x
-
 
     # highlight-start
     x = uniform_linear_motion(0, 10, 10, 0.1)

@@ -14,7 +14,6 @@ async def main():
         else:
             return fib(n - 1) + fib(n - 2)
 
-
     print(fib(10))
 
 # メインスレッドを停止させないよう非同期で実行

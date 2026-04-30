@@ -15,15 +15,12 @@ async def main():
         image[len(image) - 1 - y][x] = 1
         return image
 
-
     g = 9.8
-
 
     def parabolic_motion_step(y, v, K, dt):
         y = y + v * dt
         v = v - g * dt - K * v * dt
         return [y, v]
-
 
     def parabolic_motion(K, t, dt):
         y = 100
@@ -34,7 +31,6 @@ async def main():
         for i in range(n):
             result.append(parabolic_motion_step(result[i][0], result[i][1], K, dt))
         return result
-
 
     result = parabolic_motion(6, 60, 0.01)
     images = []

@@ -5,37 +5,42 @@ sidebar_position: 2
 import ViewSource from "@site/src/components/ViewSource";
 import Answer from "@site/src/components/Answer";
 
-# はじめての Python
+# はじめての <ruby>Python<rt>パイソン</rt></ruby>
 
-はじめてのプログラムを書いてみましょう。
+さあ、いよいよ<ruby>自分<rt>じぶん</rt></ruby>でプログラムを書いてみましょう！
 
-## Hello World
+## Hello World（ハロー・ワールド）
 
-はじめてのプログラムを書いてみましょう。
+プログラミングを始める人が、最初にやる「<ruby>決<rt>き</rt></ruby>まり」のようなものがあります。
+それは、<ruby>画面<rt>がめん</rt></ruby>に `Hello World!`（こんにちは、世界！）と<ruby>表示<rt>ひょうじ</rt></ruby>させることです。
 
-プログラミングの世界では、まず画面上に `Hello World!` と表示させるのが慣例になっています。以下のコードが画面上に `Hello World!` と表示するプログラムです。以下のコードを右のエディタ上で実行してみましょう。
+下のコードを見てみてください。これが、画面に文字を出すためのプログラムです。
+右側のエディタ（プログラムを書く場所）で<ruby>実行<rt>じっこう</rt></ruby>ボタンを<ruby>押<rt>お</rt></ruby>してみましょう！
 
 <ViewSource path="/getting-started/hello_world.ipynb" />
 
-`Hello World!` と表示されたら成功です。
+`Hello World!` と出てきましたか？おめでとうございます！これで皆さんもプログラマーの<ruby>仲間<rt>なかま</rt></ruby>入りですね。
 
-`print` は画面に文字列を表示させる命令です。`"` と `"` で括った文字列が画面に表示されます。
+ここで使った `print`（プリント）は、コンピュータに「この文字を画面に出してね！」とお願いする<ruby>命令<rt>めいれい</rt></ruby>です。
+`"`（ダブルクォーテーション）という<ruby>記号<rt>きごう</rt></ruby>で<ruby>囲<rt>かこ</rt></ruby>った文字が、画面に出てきます。
 
-### 練習問題
+### <ruby>練習問題<rt>れんしゅうもんだい</rt></ruby>
 
-先程のプログラムを少し変えて、`Hello from Python!` と出力するようなプログラムを書いてみましょう。
+さっきのプログラムを少し書きかえて、`Hello from Python!` と表示されるようにしてみましょう。
 
 <Answer>
 
-`"` と `"` で括られた文字列を `Hello World!` から次のように `Hello from Python!` に変えれば、完成です。
+`"` と `"` の<ruby>間<rt>あいだ</rt></ruby>にある文字を、`Hello World!` から `Hello from Python!` に<ruby>変<rt>か</rt></ruby>えるだけで<ruby>大丈夫<rt>だいじょうぶ</rt></ruby>ですよ！
 
   <ViewSource path="/getting-started/hello_from_python.ipynb" />
 </Answer>
 
-## コメント
+## コメント（自分用のメモ）
 
-`#` から文末まではコメントとして扱われます。
-プログラムを読みやすくするために説明を書くときや一時的にあるコードを実行しないようにするときなどによく使われます。
+プログラムの中に `#` を書くと、そのあとの文字はコンピュータが<ruby>無視<rt>むし</rt></ruby>してくれます。
+これを「コメント」と<ruby>呼<rt>よ</rt></ruby>びます。
+
+プログラムの<ruby>説明<rt>せつめい</rt></ruby>を自分あてに書いたり、<ruby>一時的<rt>いちじてき</rt></ruby>にそのコードを動かしたくないときに使ったりします。
 
 <ViewSource path="/getting-started/comment.ipynb" />
 

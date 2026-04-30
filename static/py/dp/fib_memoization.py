@@ -8,7 +8,6 @@ async def main():
     
     memo = [-1 for _ in range(10000)]
 
-
     def fib(n):
         if n == 0:
             return 0
@@ -19,7 +18,6 @@ async def main():
         else:
             memo[n] = fib(n - 1) + fib(n - 2)
             return fib(n - 1) + fib(n - 2)
-
 
     print(fib(100))
 

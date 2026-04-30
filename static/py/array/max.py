@@ -13,7 +13,6 @@ async def main():
                 max_val = scores[i]
         return max_val
 
-
     scores = [26, 78, 83, 20, 10, 11, 22, 16, 41, 95]
     print(calc_max(scores))
 

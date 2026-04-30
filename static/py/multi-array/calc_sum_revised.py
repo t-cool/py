@@ -13,7 +13,6 @@ async def main():
                 sum_val += scores[i][j]
         return sum_val
 
-
     scores = [[83, 75, 32], [73, 53, 84], [63, 48, 64]]
 
     print(calc_sum2d(scores))

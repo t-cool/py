@@ -15,7 +15,6 @@ async def main():
                     cnt += board[k][l]
         return cnt - board[i][j]
 
-
     def is_alive(board, i, j):
         neighbors_cnt = count_neighbors(board, i, j)
         if board[i][j] == 0:
@@ -31,7 +30,6 @@ async def main():
             elif neighbors_cnt >= 4:
                 return 0
 
-
     # highlight-start
     def next_generation(board):
         row = len(board)
@@ -42,9 +40,7 @@ async def main():
                 next_board[i][j] = is_alive(board, i, j)
         return next_board
 
-
     # highlight-end
-
 
     board = [[1, 1, 0], [1, 0, 0], [0, 0, 0]]
     print(next_generation(board))

@@ -9,7 +9,6 @@ async def main():
     def introduce_self(name):
         return "私の名前は、" + name + "です。"
 
-
     print(introduce_self("小林"))
 
 # メインスレッドを停止させないよう非同期で実行

@@ -12,7 +12,6 @@ async def main():
             sum_val += scores[i]
         return sum_val
 
-
     # highlight-start
     def calc_total_score_max_2d(scores):
         max_score = 0
@@ -23,9 +22,7 @@ async def main():
                     max_score = total_score
         return max_score
 
-
     # highlight-end
-
 
     scores = [[[51, 56, 10], [47, 52, 58]], [[24, 92, 34], [28, 44, 19]]]
 

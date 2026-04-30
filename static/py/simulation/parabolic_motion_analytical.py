@@ -15,9 +15,7 @@ async def main():
         image[len(image) - 1 - y][x] = 1
         return image
 
-
     g = 9.8
-
 
     def parabolic_motion(v0, theta, t, dt):
         result = []
@@ -28,7 +26,6 @@ async def main():
                 [v0 * t * math.cos(theta), -1 / 2 * g * t**2 + v0 * t * math.sin(theta)]
             )
         return result
-
 
     result = parabolic_motion(30, math.pi / 4, 4, 0.01)
     images = []

@@ -12,7 +12,6 @@ async def main():
         else:
             return b
 
-
     print(greater_val(7, 5))
 
 # メインスレッドを停止させないよう非同期で実行

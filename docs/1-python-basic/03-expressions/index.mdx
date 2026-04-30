@@ -5,49 +5,49 @@ sidebar_position: 3
 import ViewSource from "@site/src/components/ViewSource";
 import Answer from "@site/src/components/Answer";
 
-# 算術演算子
+# Python で<ruby>計算<rt>けいさん</rt></ruby>しよう！
 
-ここでは、Python で様々な計算を行っていきます。
+ここでは、Python を使っていろいろな計算をする<ruby>方法<rt>ほうほう</rt></ruby>を学びましょう。
 
-## 算術演算子
+## 計算の<ruby>記号<rt>きごう</rt></ruby>
 
-Python を使って演算をしてみましょう。次のように書くと、$1+1$ を Python に計算させて、その結果を表示することができます。
+Python を使うと、<ruby>算数<rt>さんすう</rt></ruby>の<ruby>問題<rt>もんだい</rt></ruby>も簡単に<ruby>解<rt>と</rt></ruby>くことができます。
+例えば、このように書くと $1+1$ の答えを教えてくれます。
 
 <ViewSource path="/expressions/sum.ipynb" />
 
-:::tip
-Python では、多くの場合半角スペースは無視されます。(ただし、単語の途中などに入れてはいけません。)そのため、読みやすくするために半角スペースを入れていますがなくても同じように動きます。
+:::tip スペースのなぞ
+Python では、コードの間に「<ruby>半角<rt>はんかく</rt></ruby>スペース」が入っていても、<ruby>無視<rt>むし</rt></ruby>されることが多いです。ですから、読みやすくするためにスペースを入れても<ruby>大丈夫<rt>だいじょうぶ</rt></ruby>ですよ。
 
-ただし、全角スペースが入っているとエラーが出てしまうのでプログラムを書くときには絶対に全角スペースを入れないように気をつけましょう。
+でも気をつけてください！ **「<ruby>全角<rt>ぜんかく</rt></ruby>スペース」が入っていると、エラーになって動かなくなってしまいます。** 日本語を入力したあとにスペースを入れるときは、特に<ruby>注意<rt>ちゅうい</rt></ruby>してくださいね！
 :::
 
-:::note
-上のプログラムは、次のようにしても実行できます。それぞれには、少し違いがあるようですが気にしなくて大丈夫でしょう。
+Python では、足し<ruby>算<rt>たしざん</rt></ruby>以外に、このような記号を使って計算ができます。
 
-Python では足し算以外にも次のように様々な演算をすることができます。
-
-| 演算子 | 説明   | 例                                                 |
+| 記号 | 何をする？ | 使い方の例 |
 | ------ | ------ | -------------------------------------------------- |
-| `+`    | 足す   | <ViewSource path="/expressions/sum.ipynb" />       |
-| `-`    | 引く   | <ViewSource path="/expressions/sub.ipynb" />       |
-| `*`    | 掛ける | <ViewSource path="/expressions/multi.ipynb" />     |
-| `/`    | 割る   | <ViewSource path="/expressions/div.ipynb" />       |
-| `**`   | べき乗 | <ViewSource path="/expressions/exp.ipynb" />       |
-| `//`   | 商     | <ViewSource path="/expressions/quotient.ipynb" />  |
-| `%`    | 剰余   | <ViewSource path="/expressions/remainder.ipynb" /> |
+| `+`    | たす   | <ViewSource path="/expressions/sum.ipynb" />       |
+| `-`    | ひく   | <ViewSource path="/expressions/sub.ipynb" />       |
+| `*`    | かける | <ViewSource path="/expressions/multi.ipynb" />     |
+| `/`    | わる   | <ViewSource path="/expressions/div.ipynb" />       |
+| `**`   | べき<ruby>乗<rt>じょう</rt></ruby> | <ViewSource path="/expressions/exp.ipynb" />       |
+| `//`   | わり算の<ruby>商<rt>しょう</rt></ruby> | <ViewSource path="/expressions/quotient.ipynb" />  |
+| `%`    | あまり | <ViewSource path="/expressions/remainder.ipynb" /> |
 
-括弧 `(`、`)` を用いることで、複雑な計算をすることもできます。
-黄金比を計算してみましょう。黄金比は、$\frac{1+\sqrt{5}}{2}$ で与えられます。
+かっこの `(` と `)` を使うと、もっと難しい計算もできます。
+「<ruby>黄金比<rt>おうごんひ</rt></ruby>」という、とてもきれいな<ruby>比率<rt>ひりつ</rt></ruby>を計算してみましょう！
 
 <ViewSource path="/expressions/golden_ratio.ipynb" />
 
 :::tip
-平方根は 0.5 乗とすることで計算できます。
+<ruby>平方根<rt>ルート</rt></ruby>の計算をしたいときは、「0.5乗」すると計算できますよ。
 :::
 
-### 練習問題
+### <ruby>練習問題<rt>れんしゅうもんだい</rt></ruby>
 
-20°C での華氏温度を求めてみましょう。華氏温度は、$F$ を華氏温度、$C$ を摂氏温度として次のような式で求められます。
+アメリカなどで使われている<ruby>温度<rt>おんど</rt></ruby>の<ruby>単位<rt>たんい</rt></ruby>「華氏（かし：F）」を計算してみましょう。
+ふだん使っている「摂氏（せっし：C）」が 20°C のとき、華氏では何度になるでしょうか？
+下の<ruby>式<rt>しき</rt></ruby>をプログラムにしてみてくださいね！
 
 $$
 F=\frac{9}{5}C+32

@@ -10,7 +10,6 @@ async def main():
         # highlight-next-line
         print(f"私の名前は、{name}です。{language}選択です。")
 
-
     introduce_self("東大太郎", "中国語")
 
 # メインスレッドを停止させないよう非同期で実行

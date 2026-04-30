@@ -15,9 +15,7 @@ async def main():
         image[len(image) - 1 - y][x] = 1
         return image
 
-
     g = 9.8
-
 
     def parabolic_motion_step(x, y, u, v, dt):
         x = x + u * dt
@@ -25,7 +23,6 @@ async def main():
         u = u
         v = v - g * dt
         return [x, y, u, v]
-
 
     def parabolic_motion(v0, theta, t, dt):
         x = 0
@@ -42,7 +39,6 @@ async def main():
                 )
             )
         return result
-
 
     # highlight-start
     result = parabolic_motion(30, math.pi / 4, 4, 0.01)

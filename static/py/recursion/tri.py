@@ -16,7 +16,6 @@ async def main():
         else:
             return tri(n - 1) + tri(n - 2) + tri(n - 3)
 
-
     print(tri(10))
 
 # メインスレッドを停止させないよう非同期で実行

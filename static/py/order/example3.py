@@ -11,13 +11,11 @@ async def main():
             cnt += 1
         return cnt
 
-
     def f(n):
         cnt = 0
         for _ in range(n):
             cnt = g(cnt, n)
         return cnt
-
 
     print(f(100))
 

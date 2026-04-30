@@ -14,7 +14,6 @@ async def main():
                     sum_val += scores[i][j][k]
         return sum_val
 
-
     scores = [[[51, 56, 10], [47, 52, 58]], [[24, 92, 34], [28, 44, 19]]]
 
     print(calc_sum3d(scores))

@@ -13,7 +13,6 @@ async def main():
         image[len(image) - 1 - y][x] = 1
         return image
 
-
     image = draw_cell(10, 10)
     ita.plot.image_show(image)
 

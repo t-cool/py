@@ -36,7 +36,6 @@ async def main():
         return x
         # highlight-end
 
-
     print(gauss_jordan_elimination([[0, -2, 3, 2], [-1, 3, -2, 1], [1, -1, 6, 11]]))
 
 # メインスレッドを停止させないよう非同期で実行

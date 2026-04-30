@@ -12,7 +12,6 @@ async def main():
             if number <= data[i]:
                 return i
 
-
     data = [1, 2, 3, 4, 5, 5, 7, 8, 10]
     print(linear_search(data, 5))
 

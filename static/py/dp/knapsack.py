@@ -18,7 +18,6 @@ async def main():
                     dp[i][j] = max(dp[i - 1][j], dp[i - 1][j - w[i - 1]] + v[i - 1])
         return dp[len(v)][W]
 
-
     print(knapsack([2, 3, 6], [2, 3, 5], 10))
 
 # メインスレッドを停止させないよう非同期で実行

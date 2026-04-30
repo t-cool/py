@@ -9,7 +9,6 @@ async def main():
     def calc_square(n):
         return n**2
 
-
     print(calc_square(9))
 
 # メインスレッドを停止させないよう非同期で実行

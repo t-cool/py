@@ -13,7 +13,6 @@ async def main():
         image[len(image) - 1 - y][x] = 1
         return image
 
-
     def uniform_linear_motion(x0, v0, t, dt):
         x = []
         n = int(t / dt)
@@ -21,7 +20,6 @@ async def main():
             t = dt * i
             x.append(x0 + v0 * t)
         return x
-
 
     x = uniform_linear_motion(0, 10, 10, 0.1)
     images = []

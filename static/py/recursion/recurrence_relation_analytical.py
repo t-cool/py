@@ -9,7 +9,6 @@ async def main():
     def a(n):
         return n
 
-
     print(a(10))
 
 # メインスレッドを停止させないよう非同期で実行

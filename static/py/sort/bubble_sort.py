@@ -14,7 +14,6 @@ async def main():
                     data[i], data[j] = data[j], data[i]
         return data
 
-
     data = [3, 8, 2, 5, 1, 10, 6, 9, 4, 7]
     print(bubble_sort(data))
 

@@ -12,10 +12,8 @@ async def main():
         else:
             return gcd(b, a % b)
 
-
     def lcm(a, b):
         return a * b / gcd(a, b)
-
 
     print(lcm(30, 18))
 

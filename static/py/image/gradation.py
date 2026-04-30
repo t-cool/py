@@ -13,7 +13,6 @@ async def main():
             bottom_left * (1 - s) + bottom_right * s
         ) * t
 
-
     image = []
     n = 100
     for i in range(n):

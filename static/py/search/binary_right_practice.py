@@ -18,7 +18,6 @@ async def main():
         # highlight-next-line
         return start
 
-
     data = [1, 2, 3, 4, 5, 5, 7, 8, 10]
     print(binary_search(data, 5))
 

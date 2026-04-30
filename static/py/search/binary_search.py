@@ -16,7 +16,6 @@ async def main():
                 end = center
         return end
 
-
     data = [2, 10, 23, 37, 51, 57, 66, 88, 95]
 
     print(binary_search(data, 51) + 1)

@@ -12,7 +12,6 @@ async def main():
             sum_val += i
         return sum_val
 
-
     print(up_to(10))
 
 # メインスレッドを停止させないよう非同期で実行

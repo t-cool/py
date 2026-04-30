@@ -12,7 +12,6 @@ async def main():
         else:
             return calc_sum(n - 1) + n
 
-
     print(calc_sum(10))
 
 # メインスレッドを停止させないよう非同期で実行

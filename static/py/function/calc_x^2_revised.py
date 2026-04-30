@@ -9,7 +9,6 @@ async def main():
     def f(x):
         return x**2
 
-
     f(2) + f(3)
 
 # メインスレッドを停止させないよう非同期で実行
