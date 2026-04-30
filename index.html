@@ -1098,6 +1098,9 @@
             .replace(/---[\s\S]*?---/, "")
             .replace(/import .* from .*;?$/gm, "");
 
+          // Ensure at least two newlines at the beginning to separate from any remaining artifacts
+          text = "\n\n" + text;
+
           // Handle DocCardList and other MDX tags
           text = text
             .replace(/<DocCardList\s*\/>/g, "")
@@ -1198,7 +1201,7 @@
             /^:::(note|tip|info|caution|danger|warning)(.*)$([\s\S]*?)^:::$/gm,
             (m, type, title, content) => {
               const displayTitle = (title.trim() || type).toUpperCase();
-              return `<div class="admonition ${type}"><span class="admonition-chip">${displayTitle}</span><div class="admonition-content">\n\n${content.trim()}\n\n</div></div>`;
+              return `<div class="admonition ${type}"><span class="admonition-chip">${displayTitle}</span><div class="admonition-content">\n\n${content.trim()}\n\n</div></div>\n`;
             }
           );
 
