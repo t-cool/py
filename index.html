@@ -613,6 +613,15 @@
     <script>
       const docsNav = [
         {
+          category: "記録",
+          items: [
+            {
+              title: "学習の記録",
+              path: "special:learning-record",
+            },
+          ],
+        },
+        {
           category: "1. Pythonの基本",
           items: [
             {
@@ -715,15 +724,6 @@
             {
               title: "あとがき",
               path: "docs/2-data-and-algorithm/19-postscript/index.mdx",
-            },
-          ],
-        },
-        {
-          category: "記録",
-          items: [
-            {
-              title: "学習の記録",
-              path: "special:learning-record",
             },
           ],
         },
@@ -1136,7 +1136,6 @@
       function renderLearningRecord() {
         const progress = getProgress();
         let html = "<h1>学習の記録</h1>";
-        html += "<p>これまでの学習の達成度を確認できます。</p>";
         
         html += '<table class="progress-table">';
         html += "<thead><tr><th>カテゴリー</th><th>ページ</th><th>演習内容</th><th>達成度</th></tr></thead><tbody>";
