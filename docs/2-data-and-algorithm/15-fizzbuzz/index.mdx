@@ -1,0 +1,46 @@
+---
+sidebar_position: 15
+---
+
+import ViewSource from "@site/src/components/ViewSource";
+import Answer from "@site/src/components/Answer";
+
+# FizzBuzz
+
+Fizz Buzz 問題を解くプログラムを作ってみましょう。
+これは、プログラミング初心者向けの簡単な例題としてとても有名です。初歩的なプログラムを作成する能力があるのかを判定するためによく使われます。
+
+Fizz Buzz のルールは、次のようになっています。
+
+> プレイヤーは円状に座る。最初のプレイヤーは「1」と数字を発言する。次のプレイヤーは直前のプレイヤーの発言した数字に 1 を足した数字を発言していく。ただし、3 の倍数の場合は「Fizz」（Bizz Buzz の場合は「Bizz」）、5 の倍数の場合は「Buzz」、3 の倍数かつ 5 の倍数の場合（すなわち 15 の倍数の場合）は「Fizz Buzz」（Bizz Buzz の場合は「Bizz Buzz」）を数の代わりに発言しなければならない。発言を間違えた者や、ためらった者は脱落となる。
+> -- <cite>[フリー百科事典『ウィキペディア（Wikipedia）』](https://ja.wikipedia.org/wiki/Fizz_Buzz)</cite>
+
+要するに、次のように出力するプログラムを作れば良いです。
+
+```plaintext
+1
+2
+Fizz
+4
+Buzz
+Fizz
+7
+8
+Fizz
+Buzz
+11
+Fizz
+13
+14
+FizzBuzz
+```
+
+$n$ 番目まで Fizz Buzz での正しい解を表示するプログラムを作ってみましょう。
+
+<Answer>
+<ViewSource path="/practice/fizzbuzz.ipynb" />
+
+もう一つの有名な解法を見てみましょう。
+
+<ViewSource path="/practice/fizzbuzz2.ipynb" />
+</Answer>

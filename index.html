@@ -544,99 +544,119 @@
 
     <script>
       const docsNav = [
-        { title: "はじめに", path: "docs/01-introduction/index.mdx" },
         {
           category: "1. Pythonの基本",
           items: [
             {
+              title: "はじめに",
+              path: "docs/1-python-basic/01-introduction/index.mdx",
+            },
+            {
               title: "はじめてのPython",
-              path: "docs/02-python/01-getting-started/index.mdx",
+              path: "docs/1-python-basic/02-getting-started/index.mdx",
             },
             {
               title: "数と式",
-              path: "docs/02-python/02-expressions/index.mdx",
+              path: "docs/1-python-basic/03-expressions/index.mdx",
             },
-            { title: "変数", path: "docs/02-python/03-variables/index.mdx" },
-            { title: "関数", path: "docs/02-python/04-function/index.mdx" },
-            { title: "条件分岐 (if)", path: "docs/02-python/07-if/index.mdx" },
-            {
-              title: "繰り返し (for)",
-              path: "docs/02-python/08-for/index.mdx",
-            },
-            { title: "配列", path: "docs/02-python/09-array/index.mdx" },
-            {
-              title: "多次元配列",
-              path: "docs/02-python/10-multi-array/index.mdx",
-            },
+            { title: "変数", path: "docs/1-python-basic/04-variables/index.mdx" },
+            { title: "関数", path: "docs/1-python-basic/05-function/index.mdx" },
             {
               title: "ライブラリ",
-              path: "docs/02-python/05-library/index.mdx",
+              path: "docs/1-python-basic/06-library/index.mdx",
             },
-            { title: "pip", path: "docs/02-python/06-pip/index.mdx" },
+            { title: "pip", path: "docs/1-python-basic/07-pip/index.mdx" },
+            { title: "条件分岐 (if)", path: "docs/1-python-basic/08-if/index.mdx" },
+            {
+              title: "繰り返し (for)",
+              path: "docs/1-python-basic/09-for/index.mdx",
+            },
+            { title: "配列", path: "docs/1-python-basic/10-array/index.mdx" },
+            {
+              title: "多次元配列",
+              path: "docs/1-python-basic/11-multi-array/index.mdx",
+            },
+            {
+              title: "練習問題",
+              path: "docs/1-python-basic/12-practice/index.mdx",
+            },
           ],
         },
         {
-          category: "3. アルゴリズム",
+          category: "2. アルゴリズムとデータ構造",
           items: [
             {
-              title: "計算量 (オーダー)",
-              path: "docs/05-algorithms/02-order/index.mdx",
-            },
-            { title: "探索", path: "docs/05-algorithms/03-search/index.mdx" },
-            { title: "ソート", path: "docs/05-algorithms/04-sort/index.mdx" },
-            {
-              title: "再帰",
-              path: "docs/05-algorithms/01-recursion/index.mdx",
-            },
-            {
-              title: "ライフゲーム",
-              path: "docs/03-advanced/02-life-game/index.mdx",
-            },
-            {
-              title: "連立一次方程式",
-              path: "docs/05-algorithms/05-gaussian-elimination/index.mdx",
-            },
-            {
-              title: "動的計画法 (DP)",
-              path: "docs/05-algorithms/06-dp/index.mdx",
-            },
-            {
-              title: "FizzBuzz",
-              path: "docs/05-algorithms/07-fizzbuzz/index.mdx",
-            },
-            {
-              title: "素数判定",
-              path: "docs/05-algorithms/08-primality-test/index.mdx",
-            },
-            {
-              title: "素因数分解",
-              path: "docs/05-algorithms/09-prime-factorization/index.mdx",
-            },
-            {
-              title: "最大公約数",
-              path: "docs/05-algorithms/10-gcd/index.mdx",
+              title: "シミュレーション",
+              path: "docs/2-data-and-algorithm/01-simulation/index.mdx",
             },
             {
               title: "等速直線運動",
-              path: "docs/04-simulation/uniform-linear-motion/index.mdx",
+              path: "docs/2-data-and-algorithm/02-uniform-linear-motion/index.mdx",
             },
             {
               title: "放物運動",
-              path: "docs/04-simulation/parabolic-motion/index.mdx",
+              path: "docs/2-data-and-algorithm/03-parabolic-motion/index.mdx",
             },
             {
               title: "空気抵抗がある場合の運動",
-              path: "docs/04-simulation/resisted-motion/index.mdx",
+              path: "docs/2-data-and-algorithm/04-resisted-motion/index.mdx",
             },
             {
               title: "モンテカルロ法",
-              path: "docs/04-simulation/02-monte-carlo/index.mdx",
+              path: "docs/2-data-and-algorithm/05-monte-carlo/index.mdx",
             },
-            { title: "画像処理", path: "docs/03-advanced/01-image/index.mdx" },
-            { title: "誤差", path: "docs/03-advanced/03-error/index.mdx" },
+            {
+              title: "再帰",
+              path: "docs/2-data-and-algorithm/06-recursion/index.mdx",
+            },
+            {
+              title: "計算量 (オーダー)",
+              path: "docs/2-data-and-algorithm/07-order/index.mdx",
+            },
+            {
+              title: "探索",
+              path: "docs/2-data-and-algorithm/08-search/index.mdx",
+            },
+            { title: "ソート", path: "docs/2-data-and-algorithm/09-sort/index.mdx" },
+            {
+              title: "連立一次方程式",
+              path: "docs/2-data-and-algorithm/10-gaussian-elimination/index.mdx",
+            },
+            {
+              title: "動的計画法 (DP)",
+              path: "docs/2-data-and-algorithm/11-dp/index.mdx",
+            },
+            { title: "画像処理", path: "docs/2-data-and-algorithm/12-image/index.mdx" },
+            {
+              title: "ライフゲーム",
+              path: "docs/2-data-and-algorithm/13-life-game/index.mdx",
+            },
+            { title: "誤差", path: "docs/2-data-and-algorithm/14-error/index.mdx" },
+            {
+              title: "FizzBuzz",
+              path: "docs/2-data-and-algorithm/15-fizzbuzz/index.mdx",
+            },
+            {
+              title: "素数判定",
+              path: "docs/2-data-and-algorithm/16-primality-test/index.mdx",
+            },
+            {
+              title: "素因数分解",
+              path: "docs/2-data-and-algorithm/17-prime-factorization/index.mdx",
+            },
+            {
+              title: "最大公約数",
+              path: "docs/2-data-and-algorithm/18-gcd/index.mdx",
+            },
+            {
+              title: "あとがき",
+              path: "docs/2-data-and-algorithm/19-postscript/index.mdx",
+            },
           ],
         },
       ];
+
+
 
       // Flatten nav items for simpler prev/next logic
       const flatNav = [];
@@ -719,8 +739,19 @@
         await initPyodide();
         await loadMonaco();
         document.getElementById("loading-modal").style.display = "none";
+        
         const params = new URLSearchParams(window.location.search);
-        loadDoc(params.get("doc") || "docs/01-introduction/index.mdx");
+        const defaultDoc = "docs/1-python-basic/01-introduction/index.mdx";
+        let docPath = params.get("doc");
+        
+        if (!docPath) {
+          docPath = defaultDoc;
+          const url = new URL(window.location);
+          url.searchParams.set("doc", defaultDoc);
+          window.history.replaceState({}, "", url);
+        }
+        
+        loadDoc(docPath);
         closeModalBtn.onclick = () => (renderModalEl.style.display = "none");
         window.onclick = (e) => {
           if (e.target == renderModalEl) renderModalEl.style.display = "none";
