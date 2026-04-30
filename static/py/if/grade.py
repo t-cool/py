@@ -8,11 +8,11 @@ async def main():
     
     def evaluate_grade(point):
         if point >= 90:
-            print("優上です。非常に素晴らしい成績です！")
+            print("優上です。非常に素晴らしい成績です。")
         elif point >= 80:
-            print("優です。素晴らしい成績です！")
+            print("優です。素晴らしい成績です。")
         elif point >= 65:
-            print("良です。よく理解できています！")
+            print("良です。よく理解できています。")
         elif point >= 50:
             print("可です。よく勉強しています。")
         else:
