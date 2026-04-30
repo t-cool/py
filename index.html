@@ -515,15 +515,33 @@
       }
 
       /* Learning Record Table Styles */
-      .progress-table {
-        width: 100%;
+      .markdown-body .progress-table {
+        width: 70% !important;
+        display: table !important;
         border-collapse: collapse;
         margin-top: 20px;
+        table-layout: auto;
       }
-      .progress-table th, .progress-table td {
+      .progress-table th,
+      .progress-table td {
         border: 1px solid #ddd;
         padding: 12px;
         text-align: left;
+        line-height: 1.4;
+      }
+      /* Narrow columns */
+      .progress-table th:nth-child(1),
+      .progress-table td:nth-child(1),
+      .progress-table th:nth-child(2),
+      .progress-table td:nth-child(2),
+      .progress-table th:nth-child(4),
+      .progress-table td:nth-child(4) {
+        width: 1%;
+        white-space: nowrap;
+      }
+      /* Exercise content column can wrap */
+      .progress-table td:nth-child(3) {
+        word-break: break-all;
       }
       .progress-table th {
         background-color: #f2f2f2;
@@ -611,6 +629,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-mermaid.min.js"></script>
 
     <script>
+      const docCache = {};
+      const notebookCache = {};
       const docsNav = [
         {
           category: "記録",
@@ -631,27 +651,32 @@
             {
               title: "はじめてのPython",
               path: "docs/1-python-basic/02-getting-started/index.mdx",
+              exercises: ["/getting-started/hello_world.ipynb", "/getting-started/hello_from_python.ipynb", "/getting-started/comment.ipynb", "/getting-started/comment2.ipynb"]
             },
             {
               title: "数と式",
               path: "docs/1-python-basic/03-expressions/index.mdx",
+              exercises: ["/expressions/sum.ipynb", "/expressions/sub.ipynb", "/expressions/multi.ipynb", "/expressions/div.ipynb", "/expressions/exp.ipynb", "/expressions/quotient.ipynb", "/expressions/remainder.ipynb", "/expressions/golden_ratio.ipynb", "/expressions/to_fahrenheit.ipynb"]
             },
-            { title: "変数", path: "docs/1-python-basic/04-variables/index.mdx" },
-            { title: "関数", path: "docs/1-python-basic/05-function/index.mdx" },
+            { title: "変数", path: "docs/1-python-basic/04-variables/index.mdx", exercises: ["/variables/sound_velocity.ipynb", "/variables/sound_velocity_revised.ipynb", "/variables/sound_velocity_revised_20degree.ipynb", "/variables/to_fahrenheit.ipynb", "/variables/substitution_practice.ipynb"] },
+            { title: "関数", path: "docs/1-python-basic/05-function/index.mdx", exercises: ["/function/calc_x^2_revised.ipynb", "/function/indent.ipynb", "/function/hello.ipynb", "/function/introduce_self.ipynb", "/function/gravitation.ipynb", "/function/introduce_language.ipynb"] },
             {
               title: "ライブラリ",
               path: "docs/1-python-basic/06-library/index.mdx",
+              exercises: ["/library/fabs.ipynb", "/library/pi.ipynb", "/library/ceil.ipynb", "/library/floor.ipynb", "/library/sqrt.ipynb", "/library/sin_90.ipynb", "/library/calc_e.ipynb"]
             },
-            { title: "pip", path: "docs/1-python-basic/07-pip/index.mdx" },
-            { title: "条件分岐 (if)", path: "docs/1-python-basic/08-if/index.mdx" },
+            { title: "pip", path: "docs/1-python-basic/07-pip/index.mdx", exercises: ["/pip/pandas.ipynb"] },
+            { title: "条件分岐 (if)", path: "docs/1-python-basic/08-if/index.mdx", exercises: ["/if/true.ipynb", "/if/false.ipynb", "/if/eq.ipynb", "/if/neq.ipynb", "/if/less_than.ipynb", "/if/below.ipynb", "/if/greater.ipynb", "/if/over.ipynb", "/if/alcohol.ipynb", "/if/legal_age.ipynb", "/if/the_right_to_vote.ipynb", "/if/grade.ipynb", "/if/greater_val.ipynb"] },
             {
               title: "繰り返し (for)",
               path: "docs/1-python-basic/09-for/index.mdx",
+              exercises: ["/for/sum_1to100_revised.ipynb", "/for/sum_1to1000_revised.ipynb", "/for/print_1to10.ipynb", "/for/while.ipynb", "/for/up_to.ipynb", "/for/factorial.ipynb"]
             },
-            { title: "配列", path: "docs/1-python-basic/10-array/index.mdx" },
+            { title: "配列", path: "docs/1-python-basic/10-array/index.mdx", exercises: ["/array/average3.ipynb", "/array/change.ipynb", "/array/average4.ipynb", "/array/max.ipynb"] },
             {
               title: "多次元配列",
               path: "docs/1-python-basic/11-multi-array/index.mdx",
+              exercises: ["/multi-array/calc_sum_revised.ipynb", "/multi-array/calc_sum3d.ipynb", "/multi-array/total_score_max.ipynb"]
             },
           ],
         },
@@ -659,67 +684,77 @@
           category: "2. アルゴリズムとデータ構造",
           items: [
             {
-              title: "シミュレーション",
-              path: "docs/2-data-and-algorithm/01-simulation/index.mdx",
-            },
-            {
               title: "等速直線運動",
               path: "docs/2-data-and-algorithm/02-uniform-linear-motion/index.mdx",
+              exercises: ["/simulation/uniform_linear_motion.ipynb", "/simulation/uniform_linear_motion_return_array.ipynb", "/simulation/draw_cell.ipynb", "/simulation/uniform_linear_motion_view.ipynb"]
             },
             {
               title: "放物運動",
               path: "docs/2-data-and-algorithm/03-parabolic-motion/index.mdx",
+              exercises: ["/simulation/parabolic_motion.ipynb", "/simulation/parabolic_motion_return_array.ipynb", "/simulation/parabolic_motion_view.ipynb"]
             },
             {
               title: "空気抵抗がある場合の運動",
               path: "docs/2-data-and-algorithm/04-resisted-motion/index.mdx",
+              exercises: ["/simulation/resisted_motion.ipynb"]
             },
             {
               title: "モンテカルロ法",
               path: "docs/2-data-and-algorithm/05-monte-carlo/index.mdx",
+              exercises: ["/monte-carlo/random.ipynb", "/monte-carlo/uniform.ipynb", "/monte-carlo/randint.ipynb", "/monte-carlo/coin_toss.ipynb", "/monte-carlo/calc_pi.ipynb", "/monte-carlo/dice.ipynb"]
             },
             {
               title: "再帰",
               path: "docs/2-data-and-algorithm/06-recursion/index.mdx",
+              exercises: ["/recursion/recurrence_relation_rec.ipynb", "/recursion/fib.ipynb", "/recursion/sum.ipynb", "/recursion/gcd.ipynb"]
             },
             {
               title: "計算量 (オーダー)",
               path: "docs/2-data-and-algorithm/07-order/index.mdx",
+              exercises: ["/order/example1.ipynb", "/order/example2.ipynb", "/order/exercise1.ipynb"]
             },
             {
               title: "探索",
               path: "docs/2-data-and-algorithm/08-search/index.mdx",
+              exercises: ["/search/linear_search.ipynb", "/search/binary_search.ipynb", "/search/binary_left_practice.ipynb"]
             },
-            { title: "ソート", path: "docs/2-data-and-algorithm/09-sort/index.mdx" },
+            { title: "ソート", path: "docs/2-data-and-algorithm/09-sort/index.mdx", exercises: ["/sort/bubble_sort.ipynb", "/sort/merge_sort.ipynb", "/sort/merge_sort_reverse.ipynb", "/sort/sort.ipynb"] },
             {
               title: "連立一次方程式",
               path: "docs/2-data-and-algorithm/10-gaussian-elimination/index.mdx",
+              exercises: ["/gaussian-elimination/gaussian_elimination.ipynb", "/gaussian-elimination/gauss_jordan_elimination.ipynb"]
             },
             {
               title: "動的計画法 (DP)",
               path: "docs/2-data-and-algorithm/11-dp/index.mdx",
+              exercises: ["/dp/fib_memoization.ipynb", "/dp/knapsack.ipynb", "/dp/ssp.ipynb"]
             },
-            { title: "画像処理", path: "docs/2-data-and-algorithm/12-image/index.mdx" },
+            { title: "画像処理", path: "docs/2-data-and-algorithm/12-image/index.mdx", exercises: ["/image/black_and_white.ipynb", "/image/color.ipynb", "/image/black_to_red.ipynb", "/image/black_to_green.ipynb", "/image/gradation.ipynb"] },
             {
               title: "ライフゲーム",
               path: "docs/2-data-and-algorithm/13-life-game/index.mdx",
+              exercises: ["/life-game/life_game.ipynb"]
             },
-            { title: "誤差", path: "docs/2-data-and-algorithm/14-error/index.mdx" },
+            { title: "誤差", path: "docs/2-data-and-algorithm/14-error/index.mdx", exercises: ["/error/rounding_error.ipynb", "/error/cancellation.ipynb", "/error/loss.ipynb"] },
             {
               title: "FizzBuzz",
               path: "docs/2-data-and-algorithm/15-fizzbuzz/index.mdx",
+              exercises: ["/practice/fizzbuzz.ipynb"]
             },
             {
               title: "素数判定",
               path: "docs/2-data-and-algorithm/16-primality-test/index.mdx",
+              exercises: ["/practice/prime_number.ipynb", "/practice/prime_number2.ipynb"]
             },
             {
               title: "素因数分解",
               path: "docs/2-data-and-algorithm/17-prime-factorization/index.mdx",
+              exercises: ["/practice/prime_factorize.ipynb"]
             },
             {
               title: "最大公約数",
               path: "docs/2-data-and-algorithm/18-gcd/index.mdx",
+              exercises: ["/practice/gcd.ipynb", "/practice/gcd_math.ipynb"]
             },
             {
               title: "あとがき",
@@ -857,6 +892,7 @@
         }
         
         loadDoc(docPath);
+        preloadAll();
         closeModalBtn.onclick = () => (renderModalEl.style.display = "none");
         window.onclick = (e) => {
           if (e.target == renderModalEl) renderModalEl.style.display = "none";
@@ -888,6 +924,43 @@
             if (index < flatNav.length - 1) navigateToIndex(index + 1);
           }
         });
+      }
+
+      async function preloadAll() {
+        const allPaths = [];
+        docsNav.forEach(cat => {
+          cat.items.forEach(item => {
+            if (item.path && !item.path.startsWith("special:")) {
+              allPaths.push(item.path);
+            }
+          });
+        });
+
+        // Use sequential preloading to avoid overwhelming the browser, but don't await them
+        for (const path of allPaths) {
+          if (!docCache[path]) {
+            fetch(path)
+              .then(res => res.text())
+              .then(text => {
+                docCache[path] = text;
+                // Preload notebooks found in the doc
+                const viewSourceRegex = /<ViewSource\s+path="([^"]+)"\s*\/>/g;
+                let vsMatch;
+                while ((vsMatch = viewSourceRegex.exec(text)) !== null) {
+                  const nbPath = vsMatch[1];
+                  if (!notebookCache[nbPath]) {
+                    fetch("static" + nbPath)
+                      .then(res => res.json())
+                      .then(j => {
+                        notebookCache[nbPath] = j;
+                      })
+                      .catch(() => {});
+                  }
+                }
+              })
+              .catch(() => {});
+          }
+        }
       }
       function renderNav() {
         docsNav.forEach((item) => {
@@ -987,15 +1060,25 @@
         currentDocPath = path;
         updateNavButtons();
         
+        const runnerArea = document.getElementById("runner-area");
+
         if (path === "special:learning-record") {
+          runnerArea.style.display = "none";
           renderLearningRecord();
           return;
         }
 
+        runnerArea.style.display = "flex";
         pageContentEl.innerHTML = "";
         try {
-          const res = await fetch(path);
-          let text = await res.text();
+          let text;
+          if (docCache[path]) {
+            text = docCache[path];
+          } else {
+            const res = await fetch(path);
+            text = await res.text();
+            docCache[path] = text;
+          }
           const dir = path.substring(0, path.lastIndexOf("/") + 1);
 
           // Handle Docusaurus imports: import varName from "./path.png"
@@ -1070,8 +1153,14 @@
 
           for (const task of vsTasks) {
             try {
-              const res = await fetch("static" + task.path);
-              const j = await res.json();
+              let j;
+              if (notebookCache[task.path]) {
+                j = notebookCache[task.path];
+              } else {
+                const res = await fetch("static" + task.path);
+                j = await res.json();
+                notebookCache[task.path] = j;
+              }
               const code = j.cells
                 .filter((c) => c.cell_type === "code")
                 .map((c) => c.source.join(""))
@@ -1145,22 +1234,19 @@
             cat.items.forEach(item => {
               if (item.path.startsWith("special:")) return;
               
-              const exercisesOnPage = Object.keys(progress).filter(p => progress[p].docPath === item.path);
+              const exercises = item.exercises || [];
+              if (exercises.length === 0) return; // 演習がないページは表示しない
               
-              if (exercisesOnPage.length === 0) {
-                html += `<tr><td>${cat.category}</td><td>${item.title}</td><td>-</td><td><span class="status-badge status-incomplete">未着手</span></td></tr>`;
-              } else {
-                exercisesOnPage.forEach((exPath, idx) => {
-                  const isCompleted = progress[exPath].completed;
-                  const status = isCompleted ? '<span class="status-badge status-completed">完了</span>' : '<span class="status-badge status-incomplete">進行中</span>';
-                  const exName = exPath.split("/").pop();
-                  html += `<tr>`;
-                  if (idx === 0) {
-                    html += `<td rowspan="${exercisesOnPage.length}">${cat.category}</td><td rowspan="${exercisesOnPage.length}">${item.title}</td>`;
-                  }
-                  html += `<td>${exName}</td><td>${status}</td></tr>`;
-                });
-              }
+              exercises.forEach((exPath, idx) => {
+                const isCompleted = progress[exPath] && progress[exPath].completed;
+                const status = isCompleted ? '<span class="status-badge status-completed">完了</span>' : '<span class="status-badge status-incomplete">未着手</span>';
+                const exName = exPath.split("/").pop();
+                html += `<tr>`;
+                if (idx === 0) {
+                  html += `<td rowspan="${exercises.length}">${cat.category}</td><td rowspan="${exercises.length}">${item.title}</td>`;
+                }
+                html += `<td>${exName}</td><td>${status}</td></tr>`;
+              });
             });
           }
         });
@@ -1172,15 +1258,20 @@
       async function loadNotebook(p) {
         currentNotebookPath = p;
         try {
-          const res = await fetch("static" + p);
-          const j = await res.json();
+          let j;
+          if (notebookCache[p]) {
+            j = notebookCache[p];
+          } else {
+            const res = await fetch("static" + p);
+            j = await res.json();
+            notebookCache[p] = j;
+          }
           const code = j.cells
             .filter((c) => c.cell_type === "code")
             .map((c) => c.source.join(""))
             .join("\n\n");
           if (editor) {
-            const firstLine = code.split("\n")[0];
-            const formattedCode = `"""\n${code}\n"""\n\n# 上記のコードを打ち込もう\n${firstLine}\n`;
+            const formattedCode = code;
             editor.setValue(formattedCode);
           }
           statusEl.textContent = "";
