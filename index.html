@@ -295,11 +295,12 @@
 
       /* インラインコードのスタイル */
       .markdown-body :not(pre) > code {
-        background-color: #f0f0f0 !important;
+        background-color: #fff5b1 !important;
         color: #d1104a !important;
         padding: 2px 4px !important;
         border-radius: 3px !important;
         font-size: 12px !important;
+        font-weight: bold !important;
       }
 
       /* テーブルのスタイル（白背景に固定） */
@@ -546,8 +547,11 @@
       .progress-table th {
         background-color: #f2f2f2;
       }
-      .progress-table tr:nth-child(even) {
-        background-color: #f9f9f9;
+      .markdown-body .progress-table tr,
+      .markdown-body .progress-table td,
+      .markdown-body .progress-table tr:nth-child(n),
+      .markdown-body .progress-table tr:nth-child(n) td {
+        background-color: #ffffff !important;
       }
       .status-badge {
         padding: 4px 8px;
@@ -1151,7 +1155,12 @@
             loadNotebook(vsTasks[0].path);
           }
 
-          for (const task of vsTasks) {
+          const vsPreviews = [];
+          for (let i = 0; i < vsTasks.length; i++) {
+            const task = vsTasks[i];
+            const placeholder = `VS_PLACEHOLDER_${i}_VS`;
+            text = text.replace(task.full, placeholder);
+            
             try {
               let j;
               if (notebookCache[task.path]) {
@@ -1164,25 +1173,23 @@
               const code = j.cells
                 .filter((c) => c.cell_type === "code")
                 .map((c) => c.source.join(""))
-                .join("\n\n");
-              const preview = `\n\n<button class="view-source-btn" data-path="${task.path}" onclick="loadNotebook('${
+                .join("\n\n")
+                .trim();
+              const preview = `<button class="view-source-btn" data-path="${task.path}" onclick="loadNotebook('${
                 task.path
               }')">▶ エディタに読み込む (${task.path
                 .split("/")
-                .pop()})</button>\n<pre class="language-python"><code class="language-python">${md.utils.escapeHtml(
+                .pop()})</button><pre class="language-python"><code class="language-python">${md.utils.escapeHtml(
                 code
-              )}</code></pre>\n\n`;
-              text = text.replace(task.full, preview);
+              )}</code></pre>`;
+              vsPreviews[i] = preview;
             } catch (e) {
               console.error("Failed to load preview:", e);
-              text = text.replace(
-                task.full,
-                `<button class="view-source-btn" data-path="${task.path}" onclick="loadNotebook('${
+              vsPreviews[i] = `<button class="view-source-btn" data-path="${task.path}" onclick="loadNotebook('${
                   task.path
                 }')">▶ コードを読み込む (${task.path
                   .split("/")
-                  .pop()})</button>`
-              );
+                  .pop()})</button>`;
             }
           }
 
@@ -1198,7 +1205,11 @@
           // Hide stray or closing ::: that didn't match the block above
           text = text.replace(/^:::.*$/gm, "");
 
-          pageContentEl.innerHTML = md.render(text);
+          let html = md.render(text);
+          for (let i = 0; i < vsPreviews.length; i++) {
+            html = html.replace(`VS_PLACEHOLDER_${i}_VS`, vsPreviews[i]);
+          }
+          pageContentEl.innerHTML = html;
 
           // Trigger Syntax Highlighting
           Prism.highlightAllUnder(pageContentEl);
