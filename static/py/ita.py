@@ -2,10 +2,10 @@ import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib import animation
 
-# Monkey-patch matplotlib_pyodide for ArtistAnimation
-# See: https://github.com/pyodide/matplotlib-pyodide/issues/
+# Monkey-patch matplotlib_pyodide for stability
 try:
     import matplotlib_pyodide.browser_backend as bb
+    # Patch TimerWasm
     if hasattr(bb, "TimerWasm"):
         _old_TimerWasm_init = bb.TimerWasm.__init__
 
@@ -14,6 +14,18 @@ try:
             _old_TimerWasm_init(self, *args, **kwargs)
 
         bb.TimerWasm.__init__ = _new_TimerWasm_init
+    
+    # Patch FigureCanvasWasm/FigureManagerWebAgg to prevent 'NoneType' object has no attribute 'parentNode'
+    # This happens when plt.close() is called on a figure that was never shown or whose DOM was removed.
+    if hasattr(bb, "FigureCanvasWasm"):
+        _old_canvas_destroy = bb.FigureCanvasWasm.destroy
+        def _new_canvas_destroy(self, *args, **kwargs):
+            try:
+                _old_canvas_destroy(self, *args, **kwargs)
+            except Exception:
+                pass
+        bb.FigureCanvasWasm.destroy = _new_canvas_destroy
+
 except Exception:
     pass
 

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Python 入門</title>
     <!-- Pyodide -->
-    <script src="https://cdn.jsdelivr.net/pyodide/v0.25.0/full/pyodide.js"></script>
+    <script src="https://cdn.jsdelivr.net/pyodide/v0.26.4/full/pyodide.js"></script>
     <!-- Markdown-it and KaTeX -->
     <script src="https://cdn.jsdelivr.net/npm/markdown-it@13.0.1/dist/markdown-it.min.js"></script>
     <link
@@ -513,6 +513,50 @@
         aspect-ratio: 16 / 10;
         height: auto;
       }
+
+      /* Learning Record Table Styles */
+      .progress-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+      }
+      .progress-table th, .progress-table td {
+        border: 1px solid #ddd;
+        padding: 12px;
+        text-align: left;
+      }
+      .progress-table th {
+        background-color: #f2f2f2;
+      }
+      .progress-table tr:nth-child(even) {
+        background-color: #f9f9f9;
+      }
+      .status-badge {
+        padding: 4px 8px;
+        border-radius: 4px;
+        font-size: 12px;
+        font-weight: bold;
+      }
+      .status-completed {
+        background-color: #4caf50;
+        color: white;
+      }
+      .status-incomplete {
+        background-color: #ff9800;
+        color: white;
+      }
+      .check-mark {
+        color: #4caf50;
+        margin-left: 8px;
+        font-weight: bold;
+      }
+      .completed-banner {
+        background-color: #e8f5e9;
+        border-left: 5px solid #4caf50;
+        padding: 10px;
+        margin-bottom: 10px;
+        display: none;
+      }
     </style>
   </head>
   <body>
@@ -537,6 +581,9 @@
           <button id="next-btn" class="nav-btn" title="次のページ"><i class="fa fa-chevron-right"></i></button>
         </div>
         <div id="content-area" class="markdown-body">
+          <div id="completed-msg" class="completed-banner">
+            🎉 この演習はクリアしました！
+          </div>
           <div id="page-content">左のメニューから項目を選択してください。</div>
         </div>
       </div>
@@ -671,9 +718,16 @@
             },
           ],
         },
+        {
+          category: "記録",
+          items: [
+            {
+              title: "学習の記録",
+              path: "special:learning-record",
+            },
+          ],
+        },
       ];
-
-
 
       // Flatten nav items for simpler prev/next logic
       const flatNav = [];
@@ -687,6 +741,8 @@
 
       let pyodide, editor;
       let currentDocPath = "";
+      let currentNotebookPath = "";
+      let expectedOutput = null;
 
       const md = window.markdownit({
         html: true,
@@ -714,6 +770,38 @@
         closeModalBtn = document.getElementById("close-modal"),
         prevBtn = document.getElementById("prev-btn"),
         nextBtn = document.getElementById("next-btn");
+
+      function getProgress() {
+        const data = localStorage.getItem("python_learning_progress");
+        return data ? JSON.parse(data) : {};
+      }
+
+      function saveProgress(notebookPath, completed) {
+        if (!notebookPath) return;
+        const progress = getProgress();
+        progress[notebookPath] = {
+          completed: completed,
+          docPath: currentDocPath,
+          timestamp: new Date().toISOString()
+        };
+        localStorage.setItem("python_learning_progress", JSON.stringify(progress));
+        updateCheckmarks();
+      }
+
+      function updateCheckmarks() {
+        const progress = getProgress();
+        document.querySelectorAll(".view-source-btn").forEach(btn => {
+          const path = btn.getAttribute("data-path");
+          if (progress[path] && progress[path].completed) {
+            if (!btn.querySelector(".check-mark")) {
+              const check = document.createElement("span");
+              check.className = "check-mark";
+              check.innerHTML = " ✓ 完了";
+              btn.appendChild(check);
+            }
+          }
+        });
+      }
 
       function updateNavButtons() {
         const index = flatNav.findIndex((n) => n.path === currentDocPath);
@@ -830,7 +918,15 @@
       async function initPyodide() {
         statusEl.textContent = "Pyodide初期化中...";
         pyodide = await loadPyodide();
+        // pandas is often large, so we load it separately or via micropip
         await pyodide.loadPackage(["micropip", "matplotlib", "numpy"]);
+        await pyodide.runPythonAsync("import micropip");
+        try {
+          statusEl.textContent = "Pandas準備中...";
+          await pyodide.runPythonAsync("await micropip.install('pandas')");
+        } catch (e) {
+          console.error("Failed to load pandas:", e);
+        }
         try {
           const res = await fetch("static/py/ita.py");
           if (res.ok) {
@@ -890,6 +986,12 @@
       async function loadDoc(path) {
         currentDocPath = path;
         updateNavButtons();
+        
+        if (path === "special:learning-record") {
+          renderLearningRecord();
+          return;
+        }
+
         pageContentEl.innerHTML = "";
         try {
           const res = await fetch(path);
@@ -974,7 +1076,7 @@
                 .filter((c) => c.cell_type === "code")
                 .map((c) => c.source.join(""))
                 .join("\n\n");
-              const preview = `\n\n<button class="view-source-btn" onclick="loadNotebook('${
+              const preview = `\n\n<button class="view-source-btn" data-path="${task.path}" onclick="loadNotebook('${
                 task.path
               }')">▶ エディタに読み込む (${task.path
                 .split("/")
@@ -986,7 +1088,7 @@
               console.error("Failed to load preview:", e);
               text = text.replace(
                 task.full,
-                `<button class="view-source-btn" onclick="loadNotebook('${
+                `<button class="view-source-btn" data-path="${task.path}" onclick="loadNotebook('${
                   task.path
                 }')">▶ コードを読み込む (${task.path
                   .split("/")
@@ -1011,6 +1113,7 @@
 
           // Trigger Syntax Highlighting
           Prism.highlightAllUnder(pageContentEl);
+          updateCheckmarks();
 
           // Trigger KaTeX rendering
           if (window.renderMathInElement) {
@@ -1029,7 +1132,46 @@
           console.error(err);
         }
       }
+
+      function renderLearningRecord() {
+        const progress = getProgress();
+        let html = "<h1>学習の記録</h1>";
+        html += "<p>これまでの学習の達成度を確認できます。</p>";
+        
+        html += '<table class="progress-table">';
+        html += "<thead><tr><th>カテゴリー</th><th>ページ</th><th>演習内容</th><th>達成度</th></tr></thead><tbody>";
+        
+        docsNav.forEach(cat => {
+          if (cat.items) {
+            cat.items.forEach(item => {
+              if (item.path.startsWith("special:")) return;
+              
+              const exercisesOnPage = Object.keys(progress).filter(p => progress[p].docPath === item.path);
+              
+              if (exercisesOnPage.length === 0) {
+                html += `<tr><td>${cat.category}</td><td>${item.title}</td><td>-</td><td><span class="status-badge status-incomplete">未着手</span></td></tr>`;
+              } else {
+                exercisesOnPage.forEach((exPath, idx) => {
+                  const isCompleted = progress[exPath].completed;
+                  const status = isCompleted ? '<span class="status-badge status-completed">完了</span>' : '<span class="status-badge status-incomplete">進行中</span>';
+                  const exName = exPath.split("/").pop();
+                  html += `<tr>`;
+                  if (idx === 0) {
+                    html += `<td rowspan="${exercisesOnPage.length}">${cat.category}</td><td rowspan="${exercisesOnPage.length}">${item.title}</td>`;
+                  }
+                  html += `<td>${exName}</td><td>${status}</td></tr>`;
+                });
+              }
+            });
+          }
+        });
+        
+        html += "</tbody></table>";
+        pageContentEl.innerHTML = html;
+      }
+
       async function loadNotebook(p) {
+        currentNotebookPath = p;
         try {
           const res = await fetch("static" + p);
           const j = await res.json();
@@ -1043,6 +1185,40 @@
             editor.setValue(formattedCode);
           }
           statusEl.textContent = "";
+
+          // Get expected output
+          if (pyodide) {
+            try {
+              const cleanCode = code.replace(/^!pip.*$/gm, "").replace(/^%.*$/gm, "");
+              // Load required packages
+              statusEl.textContent = "ライブラリ準備中...";
+              await pyodide.loadPackagesFromImports(cleanCode);
+              
+              // Disable show() during background execution to prevent unwanted rendering
+              await pyodide.runPythonAsync("import matplotlib.pyplot as plt\nif not hasattr(plt, '_original_show'): plt._original_show = plt.show\nplt.show = lambda *args, **kwargs: None");
+              
+              const result = await pyodide.runPythonAsync(cleanCode);
+              
+              // Safe cleanup of figures created during background run
+              await pyodide.runPythonAsync("try: plt.close('all')\nexcept: pass\nplt.show = plt._original_show");
+
+              if (result !== undefined) {
+                const reprFunc = pyodide.globals.get("repr");
+                expectedOutput = reprFunc(result);
+                reprFunc.destroy();
+                if (result && result.destroy) result.destroy();
+              } else {
+                expectedOutput = null;
+              }
+              statusEl.textContent = "";
+            } catch (e) {
+              console.error("Failed to get expected output:", e);
+              // Ensure show() is restored even on error
+              try { await pyodide.runPythonAsync("if hasattr(plt, '_original_show'): plt.show = plt._original_show"); } catch(re) {}
+              expectedOutput = null;
+              statusEl.textContent = "";
+            }
+          }
         } catch (err) {
           statusEl.textContent = "失敗";
         }
@@ -1089,12 +1265,22 @@
           modalRenderAreaEl.innerHTML = "";
 
           const result = await pyodide.runPythonAsync(processed.join("\n"));
+          let resultStr = "";
           if (result !== undefined) {
             const reprFunc = pyodide.globals.get("repr");
-            const resultStr = reprFunc(result);
+            resultStr = reprFunc(result);
             appendConsole(resultStr);
             reprFunc.destroy();
             if (result && result.destroy) result.destroy();
+          }
+
+          // Check for completion
+          if (currentNotebookPath) {
+            if (expectedOutput !== null && resultStr === expectedOutput) {
+              saveProgress(currentNotebookPath, true);
+            } else if (expectedOutput === null && result !== undefined) {
+              saveProgress(currentNotebookPath, true);
+            }
           }
 
           // Collect Matplotlib containers (including download buttons)
@@ -1116,6 +1302,9 @@
               });
             }
             renderModalEl.style.display = "flex";
+            if (currentNotebookPath) {
+               saveProgress(currentNotebookPath, true);
+            }
           }
           statusEl.textContent = "完了";
         } catch (err) {
@@ -1129,4 +1318,3 @@
     </script>
   </body>
 </html>
-
