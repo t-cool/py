@@ -1140,14 +1140,20 @@
         document.getElementById("content-area").scrollTop = 0;
         
         const runnerArea = document.getElementById("runner-area");
+        const resizer = document.getElementById("resizer");
+        const contentWrapper = document.getElementById("content-wrapper");
 
         if (path === "special:learning-record") {
           runnerArea.style.display = "none";
+          resizer.style.display = "none";
+          contentWrapper.style.width = "100%";
           renderLearningRecord();
           return;
         }
 
         runnerArea.style.display = "flex";
+        resizer.style.display = "flex";
+        contentWrapper.style.width = "50%";
         pageContentEl.innerHTML = "";
         try {
           let text;
