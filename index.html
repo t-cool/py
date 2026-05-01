@@ -138,14 +138,36 @@
         flex-direction: row;
         overflow: hidden;
         width: 100%;
+        position: relative;
       }
       #content-wrapper {
-        flex: 1;
+        width: 50%;
+        flex: 0 0 auto;
+        min-width: 100px;
         position: relative;
         display: flex;
         flex-direction: column;
-        min-width: 0;
         background: white;
+      }
+      #resizer {
+        width: 10px;
+        cursor: col-resize;
+        background-color: #f1f3f5;
+        border-left: 1px solid #dee2e6;
+        border-right: 1px solid #dee2e6;
+        z-index: 100;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        user-select: none;
+      }
+      #resizer::after {
+        content: "⋮";
+        color: #adb5bd;
+        font-weight: bold;
+      }
+      #resizer:hover {
+        background-color: #e9ecef;
       }
       #content-area {
         flex: 1;
@@ -195,11 +217,12 @@
         pointer-events: none;
       }
       #runner-area {
-        flex: 1;
+        flex: 1 1 0%;
         display: flex;
         flex-direction: column;
         border-left: 1px solid #dee2e6;
         background: white;
+        min-width: 0;
       }
       #toolbar {
         padding: 10px;
@@ -609,6 +632,7 @@
           <div id="page-content">左のメニューから項目を選択してください。</div>
         </div>
       </div>
+      <div id="resizer"></div>
       <div id="runner-area">
         <div id="toolbar">
           <button id="run-button" disabled>実行 (Shift+Enter)</button>
@@ -878,8 +902,56 @@
         navigateToIndex(index + 1);
       };
 
+      function initResizer() {
+        const resizer = document.getElementById("resizer");
+        const leftSide = document.getElementById("content-wrapper");
+        const container = document.getElementById("main-container");
+        let isResizing = false;
+
+        resizer.addEventListener("mousedown", (e) => {
+          isResizing = true;
+          document.body.style.cursor = "col-resize";
+          document.body.style.userSelect = "none";
+          
+          // Add a temporary overlay to prevent other elements from capturing events
+          const overlay = document.createElement("div");
+          overlay.id = "resize-overlay";
+          overlay.style.position = "fixed";
+          overlay.style.top = "0";
+          overlay.style.left = "0";
+          overlay.style.width = "100vw";
+          overlay.style.height = "100vh";
+          overlay.style.zIndex = "9999";
+          overlay.style.cursor = "col-resize";
+          document.body.appendChild(overlay);
+
+          const onMouseMove = (e) => {
+            if (!isResizing) return;
+            const containerRect = container.getBoundingClientRect();
+            const newWidth = e.clientX - containerRect.left;
+            if (newWidth > 100 && newWidth < containerRect.width - 100) {
+              leftSide.style.width = `${newWidth}px`;
+            }
+          };
+
+          const onMouseUp = () => {
+            isResizing = false;
+            document.body.style.cursor = "";
+            document.body.style.userSelect = "";
+            const overlay = document.getElementById("resize-overlay");
+            if (overlay) overlay.remove();
+            window.removeEventListener("mousemove", onMouseMove);
+            window.removeEventListener("mouseup", onMouseUp);
+          };
+
+          window.addEventListener("mousemove", onMouseMove);
+          window.addEventListener("mouseup", onMouseUp);
+        });
+      }
+
       async function init() {
         renderNav();
+        initResizer();
         await initPyodide();
         await loadMonaco();
         document.getElementById("loading-modal").style.display = "none";
