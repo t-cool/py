@@ -1064,6 +1064,9 @@
         currentDocPath = path;
         updateNavButtons();
         
+        // スクロール位置をトップに戻す
+        document.getElementById("content-area").scrollTop = 0;
+        
         const runnerArea = document.getElementById("runner-area");
 
         if (path === "special:learning-record") {
