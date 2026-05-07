@@ -38,3 +38,10 @@
 - `docs/`: 学習コンテンツ（MDX 形式）
 - `static/`: 演習用ノートブック (`.ipynb`)、物理・数学ライブラリ、画像アセット
 - `index.html`: メインのアプリケーション・エントリーポイント
+
+## 参考
+
+- [sikepuri-algorithm](https://github.com/sikepuri-algorithm/sikepuri-algorithm.github.io)
+
+
+
